@@ -27,5 +27,6 @@ class Usuario extends ActiveRecord {
 	    $usuario->admin=$admin;
 	    return $usuario->create();
 	}
+
 }
 ?>
