@@ -16,7 +16,7 @@ class ReporteController extends AppController
         $repo=new Reporte();
         $this->data=$repo->getTodos();
     }
-// Para probar que git va fino
+
     public function datos($id=null)
     {
         $repo=new Reporte();
