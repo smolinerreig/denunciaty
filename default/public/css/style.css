@@ -1,2 +1,10 @@
 @CHARSET "UTF-8";
 
+.half-transparent{
+	opacity: 0.5;
+}
+
+.no-side-padding{
+	padding-left: 0px;
+	padding-right: 0px;
+}
