@@ -29,7 +29,7 @@ class Reporte extends ActiveRecord {
 	}
 
     public function getReportesByUsuario($id){
-        return $this->find_all_by_sql('SELECT * FROM reporte WHERE usuario_id = '.$id.' ORDER BY inicio_at ASC;');
+        return $this->find_all_by_sql('SELECT * FROM reporte WHERE usuario_id = '.$id.' ORDER BY inicio_at DESC;');
     }
 }
 ?>
