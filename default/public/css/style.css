@@ -8,3 +8,13 @@
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
+footer{
+	background-color:#224561;
+	color: white;
+}
+
+nav.navbar#menu-principal{
+	opacity: 0.7;
+	color: #612245;
+}
