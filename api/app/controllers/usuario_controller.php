@@ -27,16 +27,20 @@ class UsuarioController extends AppController
             }
     }
 
-    public function nuevo($nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin){
+    public function nuevo($nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad){
         $usuario=new Usuario();
 
-        $crear=$usuario->createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin);
+        $crear=$usuario->createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad);
         if($crear==false){
             $this->data="Ha habido un error procesando su solicitud.";
         }else{
             $this->data=$crear;
         }
-
+    }
+    
+    public function reps($id){
+    	$reportes=new Reporte();
+		$this->data=$reportes->getReportesByUsuario($id);
     }
 
 

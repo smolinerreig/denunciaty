@@ -14,13 +14,14 @@ class Usuario extends ActiveRecord {
 		return $this->find_by_sql('SELECT * FROM usuario');
 	}
 
-	public function createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto=null, $admin){
+	public function createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto=null, $admin, $localidad){
 	    $usuario = new Usuario();
 	    $usuario->nombre=$nombre;
         $usuario->apellidos=$apellidos;
 	    $usuario->nombre_usuario=$nombre_usuario;
 	    $usuario->email=$email;
 	    $usuario->password=$password;
+	    $usuario->localidad=$localidad;
 	    if($foto!='0'){
 	        $usuario->foto=$foto;
 	    }

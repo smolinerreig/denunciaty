@@ -27,10 +27,9 @@ class ReporteController extends AppController
             }
     }
 
-    public function nuevo(){
+    public function nuevo($titulo, $foto, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id){
         $repo=new Reporte();
-        $crear=$repo->createReporte();
-
+        $crear=$repo->createReporte($titulo, $foto, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id);
         if($crear==false){
             $this->data="Ha habido un error procesando su solicitud.";
         }else{
@@ -38,7 +37,5 @@ class ReporteController extends AppController
         }
 
     }
-
-
 
 }
