@@ -22,28 +22,25 @@
 /**
  * Filtra una cadena haciendo que sea fecha
  *
- * @category   Kumbia
- * @package    Filter
+ * @category Kumbia
+ * @package Filter
  * @subpackage BaseFilter
  */
-class DateFilter implements FilterInterface
-{
-
-    /**
-     * Ejecuta el filtro
-     *
-     * @param string $s
-     * @param array $options
-     * @return string
-     */
-    public static function execute($s, $options)
-    {
-        $patron = '/(19|20)(\d{2})-(\d{1,2})-(\d{1,2})/';
-        if (preg_match($patron, $s, $regs)) {
-            return $regs[0];
-        } else {
-            return "";
-        }
-    }
-
+class DateFilter implements FilterInterface {
+	
+	/**
+	 * Ejecuta el filtro
+	 *
+	 * @param string $s        	
+	 * @param array $options        	
+	 * @return string
+	 */
+	public static function execute($s, $options) {
+		$patron = '/(19|20)(\d{2})-(\d{1,2})-(\d{1,2})/';
+		if (preg_match ( $patron, $s, $regs )) {
+			return $regs [0];
+		} else {
+			return "";
+		}
+	}
 }

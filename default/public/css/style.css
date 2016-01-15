@@ -1,20 +1,20 @@
 @CHARSET "UTF-8";
 
-.half-transparent{
+.half-transparent {
 	opacity: 0.5;
 }
 
-.no-side-padding{
+.no-side-padding {
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
-footer{
-	background-color:#224561;
+footer {
+	background-color: #224561;
 	color: white;
 }
 
-nav.navbar#menu-principal{
+nav.navbar#menu-principal {
 	opacity: 0.7;
 	color: #612245;
 }

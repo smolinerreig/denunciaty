@@ -22,22 +22,19 @@
 /**
  * Filtra una cadena haciendo addslashes
  *
- * @category   Kumbia
- * @package    Filter
+ * @category Kumbia
+ * @package Filter
  * @subpackage BaseFilter
  */
-class AddslashesFilter implements FilterInterface
-{
-
-    /**
-     * Ejecuta el filtro
-     *
-     * @param string $s
-     * @param array $options
-     */
-    public static function execute($s, $options)
-    {
-        return addslashes((string) $s);
-    }
-
+class AddslashesFilter implements FilterInterface {
+	
+	/**
+	 * Ejecuta el filtro
+	 *
+	 * @param string $s        	
+	 * @param array $options        	
+	 */
+	public static function execute($s, $options) {
+		return addslashes ( ( string ) $s );
+	}
 }

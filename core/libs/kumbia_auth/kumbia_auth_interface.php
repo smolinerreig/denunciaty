@@ -17,18 +17,20 @@
  * @copyright  Copyright (c) 2005-2015 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
-
 interface KumbiaAuthInterface {
 	/**
 	 * It makes a login
-	 * @param  array $array params
-	 * @return bool        do it had success?
+	 * 
+	 * @param array $array
+	 *        	params
+	 * @return bool do it had success?
 	 */
 	public function login(Array $array);
-
+	
 	/**
 	 * Get information
-	 * @param string $name
+	 * 
+	 * @param string $name        	
 	 */
 	public function get($name);
 }

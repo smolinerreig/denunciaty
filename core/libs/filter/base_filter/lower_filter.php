@@ -22,23 +22,20 @@
 /**
  * Filtra una cadena para que contenga solo minuscula
  *
- * @category   Kumbia
- * @package    Filter
+ * @category Kumbia
+ * @package Filter
  * @subpackage BaseFilter
  */
-class LowerFilter implements FilterInterface
-{
-
-    /**
-     * Ejecuta el filtro
-     *
-     * @param string $s
-     * @param array $options
-     * @return string
-     */
-    public static function execute($s, $options)
-    {
-        return strtolower((string) $s);
-    }
-
+class LowerFilter implements FilterInterface {
+	
+	/**
+	 * Ejecuta el filtro
+	 *
+	 * @param string $s        	
+	 * @param array $options        	
+	 * @return string
+	 */
+	public static function execute($s, $options) {
+		return strtolower ( ( string ) $s );
+	}
 }

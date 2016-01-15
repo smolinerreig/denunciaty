@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
-  <meta charset=<?= APP_CHARSET ?> >
-  <title>KumbiaPHP Framework</title>
-  <?php Tag::css('kumbia') ?>
-  <?php Tag::css('bootstrap/bootstrap.min') ?>
-  <?php echo Tag::js('jquery/jquery.min') ?>
-  <?php echo Tag::js('bootstrap/bootstrap.min') ?>
-  <?= Html::includeCss() ?>
+<head>
+<meta charset=<?= APP_CHARSET ?>>
+<title>KumbiaPHP Framework</title>
+  <?php Tag::css('kumbia')?>
+  <?php Tag::css('bootstrap/bootstrap.min')?>
+  <?php echo Tag::js('jquery/jquery.min')?>
+  <?php echo Tag::js('bootstrap/bootstrap.min')?>
+  <?= Html::includeCss()?>
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 well">
-                <h1 class="text-center">Una cabecera superchula</h1>
-            </div>
-            <div class="col-xs-12"><?php View::content(); ?></div>
-            <div class="col-xs-12"><?php View::partial('footer') ?></div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 well">
+				<h1 class="text-center">Una cabecera superchula</h1>
+			</div>
+			<div class="col-xs-12"><?php View::content(); ?></div>
+			<div class="col-xs-12"><?php View::partial('footer') ?></div>
+		</div>
+	</div>
 
 </body>
 </html>

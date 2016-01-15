@@ -20,12 +20,13 @@
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
 // Define el CORE_PATH
-define('CORE_PATH', dirname(__DIR__) . '/');
+define ( 'CORE_PATH', dirname ( __DIR__ ) . '/' );
 
 /**
+ *
  * @see Console
  */
 require CORE_PATH . 'kumbia/console.php';
 
 // Ejecuta el despachador
-Console::dispatch($argv);
+Console::dispatch ( $argv );

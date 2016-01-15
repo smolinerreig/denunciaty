@@ -21,12 +21,12 @@
 /**
  * Este script ejecuta la carga de KumbiaPHP
  *
- * @category   Kumbia
- * @package    Core
+ * @category Kumbia
+ * @package Core
  */
 
 // Iniciar el buffer de salida
-ob_start();
+ob_start ();
 
 // Versión de KumbiaPHP
 function kumbia_version() {
@@ -35,11 +35,11 @@ function kumbia_version() {
 
 // @see KumbiaException
 function handle_exception($e) {
-	KumbiaException::handleException($e);
+	KumbiaException::handleException ( $e );
 }
 
 // Inicializar el ExceptionHandler
-set_exception_handler('handle_exception');
+set_exception_handler ( 'handle_exception' );
 
 // @see Autoload
 require CORE_PATH . 'kumbia/autoload.php';
@@ -48,24 +48,24 @@ require CORE_PATH . 'kumbia/autoload.php';
 require_once CORE_PATH . 'kumbia/config.php';
 
 // Lee la configuracion
-$config = Config::read('config');
+$config = Config::read ( 'config' );
 
 // Carga la cache y verifica si esta cacheado el template, al estar en produccion
 if (PRODUCTION) {
 	// @see Cache
 	require CORE_PATH . 'libs/cache/cache.php';
-
-	//Asigna el driver por defecto usando el config.ini
-	if (isset($config['application']['cache_driver'])) {
-		Cache::setDefault($config['application']['cache_driver']);
+	
+	// Asigna el driver por defecto usando el config.ini
+	if (isset ( $config ['application'] ['cache_driver'] )) {
+		Cache::setDefault ( $config ['application'] ['cache_driver'] );
 	}
-
+	
 	// Verifica si esta cacheado el template
-	if ($template = Cache::driver()->get($url, 'kumbia.templates')) {
-		//verifica cache de template para la url
+	if ($template = Cache::driver ()->get ( $url, 'kumbia.templates' )) {
+		// verifica cache de template para la url
 		echo $template;
-		echo '<!-- Tiempo: ' . round(microtime(TRUE) - START_TIME, 5) . ' seg. -->';
-		exit(0);
+		echo '<!-- Tiempo: ' . round ( microtime ( TRUE ) - START_TIME, 5 ) . ' seg. -->';
+		exit ( 0 );
 	}
 }
 
@@ -80,7 +80,7 @@ require APP_PATH . 'libs/view.php';
 
 // Ejecuta el request
 // Dispatch y renderiza la vista
-View::render(Router::execute($url));
+View::render ( Router::execute ( $url ) );
 
 // Fin del request
 //exit();

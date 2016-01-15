@@ -2,7 +2,7 @@
 /**
  * @see KumbiaActiveRecord
  */
-require_once CORE_PATH.'libs/kumbia_active_record/kumbia_active_record.php';
+require_once CORE_PATH . 'libs/kumbia_active_record/kumbia_active_record.php';
 
 /**
  * ActiveRecord
@@ -13,7 +13,5 @@ require_once CORE_PATH.'libs/kumbia_active_record/kumbia_active_record.php';
  * @package Db
  * @subpackage ActiveRecord
  */
-class ActiveRecord extends KumbiaActiveRecord
-{
-
+class ActiveRecord extends KumbiaActiveRecord {
 }

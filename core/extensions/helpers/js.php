@@ -21,74 +21,84 @@
 /**
  * Helper que utiliza Javascript
  *
- * @category   KumbiaPHP
- * @package    Helpers
+ * @category KumbiaPHP
+ * @package Helpers
  */
-class Js
-{
-
-    /**
-     * Crea un enlace en una Aplicacion con mensaje de confirmacion respetando
-     * las convenciones de Kumbia
-     *
-     * @param string $action ruta a la accion
-     * @param string $text texto a mostrar
-     * @param string $confirm mensaje de confirmacion
-     * @param string $class clases adicionales para el link
-     * @param string|array $attrs atributos adicionales
-     * @return string
-     */
-    public static function link($action, $text, $confirm = '¿Está Seguro?', $class = '', $attrs = '')
-    {
-        $attrs = Tag::getAttrs($attrs);
-        return '<a href="' . PUBLIC_PATH . "$action\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs>$text</a>";
-    }
-
-    /**
-     * Crea un enlace a una accion con mensaje de confirmacion respetando
-     * las convenciones de Kumbia
-     *
-     * @param string $action accion
-     * @param string $text texto a mostrar
-     * @param string $confirm mensaje de confirmacion
-     * @param string $class clases adicionales para el link
-     * @param string|array $attrs atributos adicionales
-     * @return string
-     */
-    public static function linkAction($action, $text, $confirm = '¿Está Seguro?', $class = '', $attrs = '')
-    {
-        $attrs = Tag::getAttrs($attrs);
-        return '<a href="' . PUBLIC_PATH . Router::get('controller_path') . "/$action\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs>$text</a>";
-    }
-
-    /**
-     * Crea un boton submit con mensaje de confirmacion respetando
-     * las convenciones de Kumbia
-     *
-     * @param string $text texto a mostrar
-     * @param string $confirm mensaje de confirmacion
-     * @param string $class clases adicionales para el link
-     * @param string|array $attrs atributos adicionales
-     * @return string
-     */
-    public static function submit($text, $confirm = '¿Está Seguro?', $class = '', $attrs = '')
-    {
-        $attrs = Tag::getAttrs($attrs);
-        return "<input type=\"submit\" value=\"$text\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs/>";
-    }
-
-    /**
-     * Crea un boton de tipo imagen
-     *
-     * @param string $img
-     * @param string $class clases adicionales para el link
-     * @param string|array $attrs atributos adicionales
-     * @return string
-     */
-    public static function submitImage($img, $confirm = '¿Está Seguro?', $class = '', $attrs = '')
-    {
-        $attrs = Tag::getAttrs($attrs);
-        return "<input type=\"image\" data-msg=\"$confirm\" src=\"" . PUBLIC_PATH . "img/$img\" class=\"js-confirm $class\" $attrs/>";
-    }
-
+class Js {
+	
+	/**
+	 * Crea un enlace en una Aplicacion con mensaje de confirmacion respetando
+	 * las convenciones de Kumbia
+	 *
+	 * @param string $action
+	 *        	ruta a la accion
+	 * @param string $text
+	 *        	texto a mostrar
+	 * @param string $confirm
+	 *        	mensaje de confirmacion
+	 * @param string $class
+	 *        	clases adicionales para el link
+	 * @param string|array $attrs
+	 *        	atributos adicionales
+	 * @return string
+	 */
+	public static function link($action, $text, $confirm = '¿Está Seguro?', $class = '', $attrs = '') {
+		$attrs = Tag::getAttrs ( $attrs );
+		return '<a href="' . PUBLIC_PATH . "$action\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs>$text</a>";
+	}
+	
+	/**
+	 * Crea un enlace a una accion con mensaje de confirmacion respetando
+	 * las convenciones de Kumbia
+	 *
+	 * @param string $action
+	 *        	accion
+	 * @param string $text
+	 *        	texto a mostrar
+	 * @param string $confirm
+	 *        	mensaje de confirmacion
+	 * @param string $class
+	 *        	clases adicionales para el link
+	 * @param string|array $attrs
+	 *        	atributos adicionales
+	 * @return string
+	 */
+	public static function linkAction($action, $text, $confirm = '¿Está Seguro?', $class = '', $attrs = '') {
+		$attrs = Tag::getAttrs ( $attrs );
+		return '<a href="' . PUBLIC_PATH . Router::get ( 'controller_path' ) . "/$action\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs>$text</a>";
+	}
+	
+	/**
+	 * Crea un boton submit con mensaje de confirmacion respetando
+	 * las convenciones de Kumbia
+	 *
+	 * @param string $text
+	 *        	texto a mostrar
+	 * @param string $confirm
+	 *        	mensaje de confirmacion
+	 * @param string $class
+	 *        	clases adicionales para el link
+	 * @param string|array $attrs
+	 *        	atributos adicionales
+	 * @return string
+	 */
+	public static function submit($text, $confirm = '¿Está Seguro?', $class = '', $attrs = '') {
+		$attrs = Tag::getAttrs ( $attrs );
+		return "<input type=\"submit\" value=\"$text\" data-msg=\"$confirm\" class=\"js-confirm $class\" $attrs/>";
+	}
+	
+	/**
+	 * Crea un boton de tipo imagen
+	 *
+	 * @param string $img        	
+	 * @param string $class
+	 *        	clases adicionales para el link
+	 * @param string|array $attrs
+	 *        	atributos adicionales
+	 * @return string
+	 */
+	public static function submitImage($img, $confirm = '¿Está Seguro?', $class = '', $attrs = '') {
+		$attrs = Tag::getAttrs ( $attrs );
+		return "<input type=\"image\" data-msg=\"$confirm\" src=\"" . PUBLIC_PATH . "img/$img\" class=\"js-confirm $class\" $attrs/>";
+	}
 }

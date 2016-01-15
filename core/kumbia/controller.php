@@ -21,11 +21,11 @@
 /**
  * Clase principal para los controladores de Kumbia
  *
- * @category   Kumbia
- * @package    Controller
+ * @category Kumbia
+ * @package Controller
  */
 class Controller {
-
+	
 	/**
 	 * Nombre del modulo actual
 	 *
@@ -63,79 +63,75 @@ class Controller {
 	 * @var string
 	 */
 	public $scaffold;
-
+	
 	/**
 	 * Data disponble para mostrar
 	 */
 	public $data;
-
+	
 	/**
 	 * Constructor
 	 *
-	 * @param array $args
+	 * @param array $args        	
 	 */
 	public function __construct($args) {
-		/*modulo al que pertenece el controlador*/
-		$this->module_name = $args['module'];
-		$this->controller_name = $args['controller'];
-		$this->parameters = $args['parameters'];
-		$this->action_name = $args['action'];
-		View::select($args['action']);
-		View::setPath($args['controller_path']);
+		/* modulo al que pertenece el controlador */
+		$this->module_name = $args ['module'];
+		$this->controller_name = $args ['controller'];
+		$this->parameters = $args ['parameters'];
+		$this->action_name = $args ['action'];
+		View::select ( $args ['action'] );
+		View::setPath ( $args ['controller_path'] );
 	}
-
+	
 	/**
 	 * BeforeFilter
 	 *
 	 * @return false|null
 	 */
 	protected function before_filter() {
-
 	}
-
+	
 	/**
 	 * AfterFilter
 	 *
 	 * @return false|null
 	 */
 	protected function after_filter() {
-
 	}
-
+	
 	/**
 	 * Initialize
 	 *
 	 * @return false|null
 	 */
 	protected function initialize() {
-
 	}
-
+	
 	/**
 	 * Finalize
 	 *
 	 * @return false|null
 	 */
 	protected function finalize() {
-
 	}
-
+	
 	/**
 	 * Ejecuta los callback filter
 	 *
-	 * @param boolean $init filtros de inicio
+	 * @param boolean $init
+	 *        	filtros de inicio
 	 * @return false|null
 	 */
 	final public function k_callback($init = FALSE) {
 		if ($init) {
-			if ($this->initialize() !== FALSE) {
-				return $this->before_filter();
+			if ($this->initialize () !== FALSE) {
+				return $this->before_filter ();
 			}
 			return FALSE;
 		}
-
-		$this->after_filter();
-		$this->finalize();
+		
+		$this->after_filter ();
+		$this->finalize ();
 	}
-
 }

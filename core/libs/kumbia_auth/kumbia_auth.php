@@ -17,60 +17,66 @@
  * @copyright  Copyright (c) 2005-2015 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
-
 include 'kumbia_auth_base.php';
 include 'kumbia_auth_interface.php';
-
 class KumbiaAuth {
 	/**
 	 * Espacio de nombre para las variables de login
+	 * 
 	 * @var String
 	 */
 	protected $_ns = 'KumbiaAuthNameSpace';
-
+	
 	/**
 	 * Auth instance
+	 * 
 	 * @var KumbiaAuthInterface
 	 */
 	protected $auth = NULL;
-
+	
 	/**
 	 * Objeto de autenticacion
+	 * 
 	 * @var KumbiaAuth
 	 */
-	static protected $_obj = null;
-
+	protected static $_obj = null;
+	
 	/**
 	 * Inyecta el objeto de autenticación
-	 * @param KumbiaAuthInterface $auth
+	 * 
+	 * @param KumbiaAuthInterface $auth        	
 	 */
 	public static function init(KumbiaAuthInterface $auth) {
 		if (self::$_obj instanceof KumbiaAuthBase) {
-			throw new Exception('Object was initialized');
+			throw new Exception ( 'Object was initialized' );
 		}
-		self::$_obj = new KumbiaAuthBase($auth);
+		self::$_obj = new KumbiaAuthBase ( $auth );
 	}
-
+	
 	/**
 	 * Can get login with load class
+	 * 
 	 * @return boolean
 	 */
 	public static function isLogin() {
-		return (bool) Session::get('login', KumbiaAuthBase::$namespace);
+		return ( bool ) Session::get ( 'login', KumbiaAuthBase::$namespace );
 	}
-
+	
 	/**
 	 * Make the facade
-	 * @param  string $method
-	 * @param  array $args
+	 * 
+	 * @param string $method        	
+	 * @param array $args        	
 	 * @return mixed
 	 */
 	public static function __callStatic($method, $args) {
-		if (!self::$_obj instanceof KumbiaAuthBase) {
-			throw new Exception('Objeto de autenticación nulo');
+		if (! self::$_obj instanceof KumbiaAuthBase) {
+			throw new Exception ( 'Objeto de autenticación nulo' );
 		}
 		$instance = self::$_obj;
-		return call_user_func_array(array($instance, $method), $args);
+		return call_user_func_array ( array (
+				$instance,
+				$method 
+		), $args );
 	}
-
 }

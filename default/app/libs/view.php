@@ -10,7 +10,5 @@ require_once CORE_PATH . 'kumbia/kumbia_view.php';
  * @category KumbiaPHP
  * @package View
  */
-class View extends KumbiaView
-{
-
+class View extends KumbiaView {
 }

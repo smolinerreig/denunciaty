@@ -14,19 +14,15 @@
  */
 require_once CORE_PATH . 'kumbia/kumbia_rest.php';
 class RestController extends KumbiaRest {
-
-    /**
-     * Inicialización de la petición
-     * ****************************************
-     * Aqui debe ir la autenticación de la API
-     * ****************************************
-     */
-    final protected function initialize() {
-        
-    }
-
-    final protected function finalize() {
-        
-    }
-
+	
+	/**
+	 * Inicialización de la petición
+	 * ****************************************
+	 * Aqui debe ir la autenticación de la API
+	 * ****************************************
+	 */
+	final protected function initialize() {
+	}
+	final protected function finalize() {
+	}
 }

@@ -21,155 +21,157 @@
 /**
  * Clase base para componentes de cacheo
  *
- * @category   Kumbia
- * @package    Cache
+ * @category Kumbia
+ * @package Cache
  */
-abstract class Cache
-{
-
-    /**
-     * Pool de drivers para cache
-     *
-     * @var array
-     * */
-    protected static $_drivers = array();
-    /**
-     * Driver por defecto
-     *
-     * @var string
-     * */
-    protected static $_default_driver = 'file';
-    /**
-     * Id de ultimo elemento solicitado
-     *
-     * @var string
-     */
-    protected $_id = null;
-    /**
-     * Grupo de ultimo elemento solicitado
-     *
-     * @var string
-     */
-    protected $_group = 'default';
-    /**
-     * Tiempo de vida
-     *
-     * @var string
-     */
-    protected $_lifetime = '';
-
-    /**
-     * Carga un elemento cacheado
-     *
-     * @param string $id
-     * @param string $group
-     * @return string
-     */
-    public abstract function get($id, $group = 'default');
-
-    /**
-     * Guarda un elemento en la cache con nombre $id y valor $value
-     *
-     * @param string $value
-     * @param string $lifetime tiempo de vida con formato strtotime, utilizado para cache
-     * @param string $id
-     * @param string $group
-     * @return boolean
-     */
-    public abstract function save($value, $lifetime = '', $id = FALSE, $group = 'default');
-
-    /**
-     * Limpia la cache
-     *
-     * @param string $group
-     * @return boolean
-     */
-    public abstract function clean($group=false);
-
-    /**
-     * Elimina un elemento de la cache
-     *
-     * @param string $id
-     * @param string $group
-     * @return boolean
-     */
-    public abstract function remove($id, $group = 'default');
-
-    /**
-     * Inicia el cacheo del buffer de salida hasta que se llame a end
-     *
-     * @param string $lifetime tiempo de vida con formato strtotime, utilizado para cache
-     * @param string $id
-     * @param string $group
-     * @return boolean
-     */
-    public function start($lifetime, $id, $group = 'default')
-    {
-        if ($data = $this->get($id, $group)) {
-            echo $data;
-
-            // No es necesario cachear
-            return FALSE;
-        }
-        $this->_lifetime = $lifetime;
-
-        // inicia la captura del buffer
-        ob_start();
-
-        // Inicia cacheo
-        return TRUE;
-    }
-
-    /**
-     * Termina el buffer de salida
-     *
-     * @param boolean $save indica si al terminar guarda la cache
-     * @return boolean
-     */
-    public function end($save = TRUE)
-    {
-        if (!$save) {
-            ob_end_flush();
-            return FALSE;
-        }
-
-        // obtiene el contenido del buffer
-        $value = ob_get_contents();
-
-        // libera el buffer
-        ob_end_flush();
-
-        return $this->save($value, $this->_lifetime, $this->_id, $this->_group);
-    }
-
-    /**
-     * Obtiene el driver de cache indicado
-     *
-     * @param string $driver (file, sqlite, memsqlite, APC)
-     * */
-    public static function driver($driver = '')
-    {
-        if (!$driver) {
-            $driver = self::$_default_driver;
-        }
-
-        if (!isset(self::$_drivers[$driver])) {
-            require __DIR__ . "/drivers/{$driver}_cache.php";
-            $class = $driver . 'cache';
-            self::$_drivers[$driver] = new $class();
-        }
-
-        return self::$_drivers[$driver];
-    }
-
-    /**
-     * Cambia el driver por defecto
-     *
-     * @param string $driver nombre del driver por defecto
-     */
-    public static function setDefault($driver = 'file')
-    {
-        self::$_default_driver = $driver;
-    }
-
+abstract class Cache {
+	
+	/**
+	 * Pool de drivers para cache
+	 *
+	 * @var array
+	 *
+	 */
+	protected static $_drivers = array ();
+	/**
+	 * Driver por defecto
+	 *
+	 * @var string
+	 *
+	 */
+	protected static $_default_driver = 'file';
+	/**
+	 * Id de ultimo elemento solicitado
+	 *
+	 * @var string
+	 */
+	protected $_id = null;
+	/**
+	 * Grupo de ultimo elemento solicitado
+	 *
+	 * @var string
+	 */
+	protected $_group = 'default';
+	/**
+	 * Tiempo de vida
+	 *
+	 * @var string
+	 */
+	protected $_lifetime = '';
+	
+	/**
+	 * Carga un elemento cacheado
+	 *
+	 * @param string $id        	
+	 * @param string $group        	
+	 * @return string
+	 */
+	public abstract function get($id, $group = 'default');
+	
+	/**
+	 * Guarda un elemento en la cache con nombre $id y valor $value
+	 *
+	 * @param string $value        	
+	 * @param string $lifetime
+	 *        	tiempo de vida con formato strtotime, utilizado para cache
+	 * @param string $id        	
+	 * @param string $group        	
+	 * @return boolean
+	 */
+	public abstract function save($value, $lifetime = '', $id = FALSE, $group = 'default');
+	
+	/**
+	 * Limpia la cache
+	 *
+	 * @param string $group        	
+	 * @return boolean
+	 */
+	public abstract function clean($group = false);
+	
+	/**
+	 * Elimina un elemento de la cache
+	 *
+	 * @param string $id        	
+	 * @param string $group        	
+	 * @return boolean
+	 */
+	public abstract function remove($id, $group = 'default');
+	
+	/**
+	 * Inicia el cacheo del buffer de salida hasta que se llame a end
+	 *
+	 * @param string $lifetime
+	 *        	tiempo de vida con formato strtotime, utilizado para cache
+	 * @param string $id        	
+	 * @param string $group        	
+	 * @return boolean
+	 */
+	public function start($lifetime, $id, $group = 'default') {
+		if ($data = $this->get ( $id, $group )) {
+			echo $data;
+			
+			// No es necesario cachear
+			return FALSE;
+		}
+		$this->_lifetime = $lifetime;
+		
+		// inicia la captura del buffer
+		ob_start ();
+		
+		// Inicia cacheo
+		return TRUE;
+	}
+	
+	/**
+	 * Termina el buffer de salida
+	 *
+	 * @param boolean $save
+	 *        	indica si al terminar guarda la cache
+	 * @return boolean
+	 */
+	public function end($save = TRUE) {
+		if (! $save) {
+			ob_end_flush ();
+			return FALSE;
+		}
+		
+		// obtiene el contenido del buffer
+		$value = ob_get_contents ();
+		
+		// libera el buffer
+		ob_end_flush ();
+		
+		return $this->save ( $value, $this->_lifetime, $this->_id, $this->_group );
+	}
+	
+	/**
+	 * Obtiene el driver de cache indicado
+	 *
+	 * @param string $driver
+	 *        	(file, sqlite, memsqlite, APC)
+	 *        	
+	 */
+	public static function driver($driver = '') {
+		if (! $driver) {
+			$driver = self::$_default_driver;
+		}
+		
+		if (! isset ( self::$_drivers [$driver] )) {
+			require __DIR__ . "/drivers/{$driver}_cache.php";
+			$class = $driver . 'cache';
+			self::$_drivers [$driver] = new $class ();
+		}
+		
+		return self::$_drivers [$driver];
+	}
+	
+	/**
+	 * Cambia el driver por defecto
+	 *
+	 * @param string $driver
+	 *        	nombre del driver por defecto
+	 */
+	public static function setDefault($driver = 'file') {
+		self::$_default_driver = $driver;
+	}
 }

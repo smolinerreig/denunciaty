@@ -28,65 +28,60 @@
  * y errores a la vista.
  * Tambien envia mensajes en la consola, si se usa desde consola.
  *
- * @category   Kumbia
- * @package    Flash
+ * @category Kumbia
+ * @package Flash
  */
-class Flash
-{
-
-    /**
-     * Visualiza un mensaje flash
-     *
-     * @param string $name	Para tipo de mensaje y para CSS class='$name'.
-     * @param string $text 	Mensaje a mostrar
-     */
-    public static function show($name, $text)
-    {
-        if (isset($_SERVER['SERVER_SOFTWARE'])) {
-            echo '<div class="', $name, ' flash">', $text, '</div>', PHP_EOL;
-        } else {
-            echo $name, ': ', strip_tags($text), PHP_EOL;
-        }
-    }
-
-    /**
-     * Visualiza un mensaje de error
-     *
-     * @param string $text
-     */
-    public static function error($text)
-    {
-        return self::show('error', $text);
-    }
-
-    /**
-     * Visualiza un mensaje de advertencia en pantalla
-     *
-     * @param string $text
-     */
-    public static function warning($text)
-    {
-        return self::show('warning', $text);
-    }
-
-    /**
-     * Visualiza informacion en pantalla
-     *
-     * @param string $text
-     */
-    public static function info($text)
-    {
-        return self::show('info', $text);
-    }
-
-    /**
-     * Visualiza informacion de suceso correcto en pantalla
-     *
-     * @param string $text
-     */
-    public static function valid($text)
-    {
-        return self::show('valid', $text);
-    }
-
+class Flash {
+	
+	/**
+	 * Visualiza un mensaje flash
+	 *
+	 * @param string $name
+	 *        	Para tipo de mensaje y para CSS class='$name'.
+	 * @param string $text
+	 *        	Mensaje a mostrar
+	 */
+	public static function show($name, $text) {
+		if (isset ( $_SERVER ['SERVER_SOFTWARE'] )) {
+			echo '<div class="', $name, ' flash">', $text, '</div>', PHP_EOL;
+		} else {
+			echo $name, ': ', strip_tags ( $text ), PHP_EOL;
+		}
+	}
+	
+	/**
+	 * Visualiza un mensaje de error
+	 *
+	 * @param string $text        	
+	 */
+	public static function error($text) {
+		return self::show ( 'error', $text );
+	}
+	
+	/**
+	 * Visualiza un mensaje de advertencia en pantalla
+	 *
+	 * @param string $text        	
+	 */
+	public static function warning($text) {
+		return self::show ( 'warning', $text );
+	}
+	
+	/**
+	 * Visualiza informacion en pantalla
+	 *
+	 * @param string $text        	
+	 */
+	public static function info($text) {
+		return self::show ( 'info', $text );
+	}
+	
+	/**
+	 * Visualiza informacion de suceso correcto en pantalla
+	 *
+	 * @param string $text        	
+	 */
+	public static function valid($text) {
+		return self::show ( 'valid', $text );
+	}
 }

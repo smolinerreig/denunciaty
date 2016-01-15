@@ -22,23 +22,20 @@
 /**
  * Filtra una cadena para eliminar etiquetas
  *
- * @category   Kumbia
- * @package    Filter
+ * @category Kumbia
+ * @package Filter
  * @subpackage BaseFilter
  */
-class StriptagsFilter implements FilterInterface
-{
-
-    /**
-     * Ejecuta el filtro
-     *
-     * @param string $s
-     * @param array $options
-     * @return string
-     */
-    public static function execute($s, $options)
-    {
-        return strip_tags((string) $s);
-    }
-
+class StriptagsFilter implements FilterInterface {
+	
+	/**
+	 * Ejecuta el filtro
+	 *
+	 * @param string $s        	
+	 * @param array $options        	
+	 * @return string
+	 */
+	public static function execute($s, $options) {
+		return strip_tags ( ( string ) $s );
+	}
 }

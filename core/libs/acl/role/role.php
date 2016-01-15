@@ -25,44 +25,40 @@
  * Esta clase define los roles y parametros
  * de cada uno
  *
- * @category   Kumbia
- * @package    Acl
+ * @category Kumbia
+ * @package Acl
  * @subpackage AclRole
  */
-class AclRole
-{
-
-    /**
-     * Nombre del Rol
-     *
-     * @var string
-     */
-    public $name;
-
-    /**
-     * Constructor de la clase Rol
-     *
-     * @param string $name
-     */
-    public function __construct($name)
-    {
-        if ($name == '*') {
-            throw new KumbiaException('Nombre invalido "*" para nombre de Rol en Acl_Role::__constuct');
-        }
-        $this->name = $name;
-    }
-
-    /**
-     * Impide que le cambien el nombre al Rol en el Objeto
-     *
-     * @param string $name
-     * @param string $value
-     */
-    public function __set($name, $value)
-    {
-        if ($name != 'name') {
-            $this->$name = $value;
-        }
-    }
-
+class AclRole {
+	
+	/**
+	 * Nombre del Rol
+	 *
+	 * @var string
+	 */
+	public $name;
+	
+	/**
+	 * Constructor de la clase Rol
+	 *
+	 * @param string $name        	
+	 */
+	public function __construct($name) {
+		if ($name == '*') {
+			throw new KumbiaException ( 'Nombre invalido "*" para nombre de Rol en Acl_Role::__constuct' );
+		}
+		$this->name = $name;
+	}
+	
+	/**
+	 * Impide que le cambien el nombre al Rol en el Objeto
+	 *
+	 * @param string $name        	
+	 * @param string $value        	
+	 */
+	public function __set($name, $value) {
+		if ($name != 'name') {
+			$this->$name = $value;
+		}
+	}
 }

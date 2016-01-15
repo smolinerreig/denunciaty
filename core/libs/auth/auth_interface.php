@@ -21,27 +21,25 @@
 /**
  * Contiene métodos claves que implementan los adaptadores
  *
- * @category   extensions
- * @package    Auth
+ * @category extensions
+ * @package Auth
  */
-interface AuthInterface
-{
-
-    /**
-     * Constructor del adaptador
-     */
-    public function __construct($auth, $extra_args);
-
-    /**
-     * Obtiene los datos de identidad obtenidos al autenticar
-     *
-     */
-    public function get_identity();
-
-    /**
-     * Autentica un usuario usando el adaptador
-     *
-     * @return boolean
-     */
-    public function authenticate();
+interface AuthInterface {
+	
+	/**
+	 * Constructor del adaptador
+	 */
+	public function __construct($auth, $extra_args);
+	
+	/**
+	 * Obtiene los datos de identidad obtenidos al autenticar
+	 */
+	public function get_identity();
+	
+	/**
+	 * Autentica un usuario usando el adaptador
+	 *
+	 * @return boolean
+	 */
+	public function authenticate();
 }

@@ -22,23 +22,20 @@
 /**
  * Filtra una cadena haciendo trim
  *
- * @category   Kumbia
- * @package    Filter
+ * @category Kumbia
+ * @package Filter
  * @subpackage BaseFilter
  */
-class TrimFilter implements FilterInterface
-{
-
-    /**
-     * Ejecuta el filtro
-     *
-     * @param string $s
-     * @param array $options
-     * @return string
-     */
-    public static function execute($s, $options)
-    {
-        return trim((string) $s);
-    }
-
+class TrimFilter implements FilterInterface {
+	
+	/**
+	 * Ejecuta el filtro
+	 *
+	 * @param string $s        	
+	 * @param array $options        	
+	 * @return string
+	 */
+	public static function execute($s, $options) {
+		return trim ( ( string ) $s );
+	}
 }
