@@ -34,6 +34,7 @@ class ReporteController extends AppController {
 	}
 	/**
 	 * Inserta un nuevo reporte en la base de datos
+	 * El parámertro $foto es el path donde se encuentra la foto que el usuario elija subir.
 	 * Todos los parámetros son necesarios
 	 * 
 	 * @param string $titulo        	
