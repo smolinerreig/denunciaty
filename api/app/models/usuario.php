@@ -7,7 +7,7 @@ class Usuario extends ActiveRecord {
 		}
 	}
 	public function getTodos() {
-		return $this->find_by_sql ( 'SELECT * FROM usuario' );
+		return $this->find_all_by_sql ( 'SELECT * FROM usuario' );
 	}
 	public function createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto = null, $admin, $localidad) {
 		$usuario = new Usuario ();

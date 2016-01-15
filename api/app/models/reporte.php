@@ -7,7 +7,7 @@ class Reporte extends ActiveRecord {
 		}
 	}
 	public function getTodos() {
-		return $this->find_by_sql ( 'SELECT * FROM reporte;' );
+		return $this->find_all_by_sql ( 'SELECT * FROM reporte;' );
 	}
 	public function createReporte($titulo, $foto = null, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id) {
 		$repo = new Reporte ();
