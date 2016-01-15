@@ -7,6 +7,8 @@
   <?php Tag::css('kumbia')?>
   <?php Tag::css('bootstrap/bootstrap.min')?>
   <?php Tag::css('style')?>
+  <link href='https://fonts.googleapis.com/css?family=Play'
+	rel='stylesheet' type='text/css'>
   <?php echo Tag::js('jquery/jquery.min')?>
   <?php echo Tag::js('bootstrap/bootstrap.min')?>
   <?= Html::includeCss()?>
@@ -15,12 +17,15 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 no-side-padding"><?php View::partial('header') ?></div>
-		</div>
-		<div class="row">
 			<div class="col-xs-12 no-side-padding"><?php View::partial('menu') ?></div>
-			<div class="col-md-10"><?php View::content(); ?></div>
-			<div class="col-md-2"><?php View::partial('reportes')?></div>
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12 no-side-padding"><?php View::partial('header') ?></div>
+					<div class="col-xs-12"><hr></div>
+					<div class="col-md-10"><?php View::content(); ?></div>
+					<div class="col-md-2"><?php View::partial('reportes')?></div>
+				</div>
+			</div>
 
 		</div>
 		<div class="row">

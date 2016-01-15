@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .half-transparent {
-	opacity: 0.5;
+	
 }
 
 .no-side-padding {
@@ -15,6 +15,44 @@ footer {
 }
 
 nav.navbar#menu-principal {
-	opacity: 0.7;
 	color: #612245;
+	width: 100%;
+	position: fixed;
+	z-index: 2;
+	border-radius: 0px;
+}
+
+.navbar *, .tit_cabecera {
+	font-family: 'Play', sans-serif;
+	color: #456122;
+}
+
+header {
+	margin-top: 3.7em;
+	color: #456122;
+	background-repeat: no-repeat;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+.tit_cabecera {
+	position: absolute;
+	font-size: 8em;
+}
+
+hr {
+	border-width: 0px;
+	color: #456122;
+}
+
+.panel>.panel-heading {
+	background-color: #224561;
+	color: white;
+}
+
+@media ( max-width : 991px) {
+	body {
+		
+	}
 }

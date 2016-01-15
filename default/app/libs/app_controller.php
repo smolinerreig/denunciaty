@@ -16,6 +16,9 @@ require_once CORE_PATH . 'kumbia/controller.php';
  */
 class AppController extends Controller {
 	final protected function initialize() {
+		//if (!Auth::is_valid() and Router::get('controller') != 'login'){
+			//Redirect::to('login');
+		//}
 	}
 	final protected function finalize() {
 	}
