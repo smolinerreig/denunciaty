@@ -20,11 +20,20 @@ nav.navbar#menu-principal {
 	position: fixed;
 	z-index: 2;
 	border-radius: 0px;
+	opacity: 0.9;
 }
 
 .navbar *, .tit_cabecera {
 	font-family: 'Play', sans-serif;
-	color: #456122;
+	
+}
+
+.navbar .container-fluid .navbar-brand{
+	margin-left: 0px;
+}
+
+#navbar-collapse > form * input, #navbar-collapse > form > button{
+	border-radius:0px;
 }
 
 header {
