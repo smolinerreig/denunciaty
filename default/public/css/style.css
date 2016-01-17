@@ -47,4 +47,9 @@ hr{
 .panel-default .panel-heading{
 	background-color:#224562;
 	color: white;
+	border-radius:3px 3px 0px 0px;
+}
+
+.panel.panel-default{
+	border-radius:4px 4px 0px 0px;
 }
