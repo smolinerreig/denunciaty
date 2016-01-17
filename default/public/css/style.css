@@ -1,67 +1,50 @@
-@CHARSET "UTF-8";
-
-.half-transparent {
-	
-}
-
 .no-side-padding {
-	padding-left: 0px;
 	padding-right: 0px;
+	padding-left: 0px;
 }
 
-footer {
-	background-color: #224561;
-	color: white;
-}
-
-nav.navbar#menu-principal {
-	color: #612245;
-	width: 100%;
-	position: fixed;
-	z-index: 2;
-	border-radius: 0px;
-	opacity: 0.9;
-}
-
-.navbar *, .tit_cabecera {
-	font-family: 'Play', sans-serif;
-	
-}
-
-.navbar .container-fluid .navbar-brand{
+.no-side-margin {
+	margin-right: 0px;
 	margin-left: 0px;
 }
 
-#navbar-collapse > form * input, #navbar-collapse > form > button{
-	border-radius:0px;
+#navbar-collapse>form {
+	padding: 0px 0px;
 }
 
-header {
-	margin-top: 3.7em;
-	color: #456122;
-	background-repeat: no-repeat;
-	border-style: solid;
-	border-color: black;
-	border-width: 1px;
+#menu-principal, .panel-default .panel-heading .panel-title{
+	font-family: 'Play', serif;
+}
+#menu-principal {
+	border-radius: 0px;
+	border-width: 0px 0px 1px 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	opacity: 0.9;
 }
 
-.tit_cabecera {
-	position: absolute;
-	font-size: 8em;
+#menu-principal input, #menu-principal button {
+	border-radius: 0px;
 }
 
-hr {
-	border-width: 0px;
-	color: #456122;
+.col-xs-12.no-side-margin.no-side-padding{
+	margin-bottom: 10px;
 }
 
-.panel>.panel-heading {
-	background-color: #224561;
+hr{
+	opacity: 0;
+}
+
+.panel-heading{
+	height: auto;
+}
+
+.footer{
+	background-color:#224562;
 	color: white;
 }
-
-@media ( max-width : 991px) {
-	body {
-		
-	}
+.panel-default .panel-heading{
+	background-color:#224562;
+	color: white;
 }
