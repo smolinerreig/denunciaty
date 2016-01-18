@@ -13,7 +13,9 @@ class ReporteController extends AppController {
 		View::select ( null );
 	}
 	/**
-	 * Accion por defecto, revuelve todos los reportes
+	 * Accion por defecto, devuelve todos los reportes
+	 * 
+	 * Ejemplo: http://denunciaty/api/reporte
 	 */
 	public function index() {
 		$repo = new Reporte ();
@@ -21,6 +23,8 @@ class ReporteController extends AppController {
 	}
 	/**
 	 * Devuelve los datos del reporte
+	 * 
+	 * Ejemplo: http://denunciaty/api/reporte/datos/2
 	 * 
 	 * @param int $id        	
 	 */
@@ -36,6 +40,9 @@ class ReporteController extends AppController {
 	 * Inserta un nuevo reporte en la base de datos
 	 * El parámertro $foto es el path donde se encuentra la foto que el usuario elija subir.
 	 * Todos los parámetros son necesarios
+	 * 
+	 * Ejemplo: http://denunciaty/api/reporte/nuevo/Masacre en Fuentelidiota/Han palmado chorrocientos gatos al indigestarse comiendo conejo/1/Fuentelidiota/2/5/0
+	 * Si no se desea subir foto se recomiento dar valor 0. 
 	 * 
 	 * @param string $titulo        	
 	 * @param string $foto        	

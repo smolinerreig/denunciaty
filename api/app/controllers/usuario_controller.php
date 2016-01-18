@@ -13,7 +13,9 @@ class UsuarioController extends AppController {
 		View::select ( null );
 	}
 	/**
-	 * Accion por defecto, revuelve todos los usuarios
+	 * Accion por defecto, devuelve todos los usuarios
+	 * 
+	 * Ejemplo: http://denunciaty/api/usuario
 	 */
 	public function index() {
 		$usuario = new Usuario ();
@@ -22,6 +24,8 @@ class UsuarioController extends AppController {
 	/**
 	 * Devuelve los datos del usuario
 	 * Si no se pasa el parámetro $id devuelve todos los usuarios;
+	 * 
+	 * Ejemplo: http://denunciaty/api/usuario/datos/3
 	 *
 	 * @param int $id        	
 	 */
@@ -37,6 +41,9 @@ class UsuarioController extends AppController {
 	 * Introduce un nuevo usuario en la base de datos
 	 * El parámertro $foto es el path donde se encuentra la foto que el usuario elija subir.
 	 * Todos los parámetros son necesarios
+	 * 
+	 * Ejemplo: http://denunciaty/api/usuario/nuevo/Jonah/J. Jameson/jonahmson/j.jameson@gmail.com/notieneninguna/0/1/New+York
+	 * Si no se quiere introducir foto, recomiendo escribir 0 como parámetro
 	 * 
 	 * @param string $nombre        	
 	 * @param string $apellidos        	
@@ -59,7 +66,9 @@ class UsuarioController extends AppController {
 		}
 	}
 	/**
-	 * Devuelve un array con los reportes creados por el usuario
+	 * Devuelve un array con los reportes creados por un usuario
+	 * 
+	 * Ejemplo: http://denunciaty/api/usuario/reps/5
 	 * 
 	 * @param int $id        	
 	 */
@@ -68,6 +77,17 @@ class UsuarioController extends AppController {
 		$this->data = $reportes->getReportesByUsuario ( $id );
 	}
 	
+	/**
+	 * Permite modificar ciertos datos en el registro de un usuario.
+	 * Dichos datos son nombre, apellidos, nombre_usuario, email, localidad
+	 * Ha de emplearse el protocolo get.
+	 * 
+	 * Ejemplo: http://denunciaty/api/usuario/editar?nombre=Wade&apellidos=Wilson+Pooliard&nombre_usuario=&email=ded.pul@chimimail.com&localidad=New+York.
+	 * Los espacios se traducen como '+' (localidad y apellidos en el ejemplo).
+	 * Si un campo no desea cambiarse se dejará sin valor (nombre_usuario en el ejemplo).
+	 * Password y foto no se pueden cambiar en esta función.
+	 * @param int $id
+	 */
 	public function editar($id){
 		$usuario = new Usuario();
 		$this->data=$usuario->editUsuario($id, $_GET);
