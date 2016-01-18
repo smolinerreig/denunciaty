@@ -45,11 +45,12 @@ class ReporteController extends AppController {
 	 * @param int $tipo_id        	
 	 * @param int $usuario_id        	
 	 */
-	public function nuevo($titulo, $foto, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id) {
+	public function nuevo($titulo, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id, $foto) {
 		$repo = new Reporte ();
-		$crear = $repo->createReporte ( $titulo, $foto, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id );
+				
+		$crear = $repo->createReporte ( $titulo, str_replace('+', '/',$foto), $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id );
 		if ($crear == false) {
-			$this->data = "Ha habido un error procesando su solicitud.";
+			$this->data = '0';
 		} else {
 			$this->data = $crear;
 		}

@@ -21,7 +21,12 @@ class Reporte extends ActiveRecord {
 		$repo->tipo_id = $tipo_id;
 		$repo->usuario_id = $usuario_id;
 		$repo->solucionado = 0;
-		return $repo->create ();
+		if($repo->create ()==true){
+			return $repo->create ();
+		}else{
+			return '0';
+		}
+		
 	}
 	public function getReportesByUsuario($id) {
 		return $this->find_all_by_sql ( 'SELECT * FROM reporte WHERE usuario_id = ' . $id . ' ORDER BY inicio_at DESC;' );

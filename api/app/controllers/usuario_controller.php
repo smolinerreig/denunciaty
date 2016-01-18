@@ -21,6 +21,7 @@ class UsuarioController extends AppController {
 	}
 	/**
 	 * Devuelve los datos del usuario
+	 * Si no se pasa el parámetro $id devuelve todos los usuarios;
 	 *
 	 * @param int $id        	
 	 */
@@ -52,7 +53,7 @@ class UsuarioController extends AppController {
 		
 		$crear = $usuario->createUsuario ( $nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad );
 		if ($crear == false) {
-			$this->data = "Ha habido un error procesando su solicitud.";
+			$this->data = 0;
 		} else {
 			$this->data = $crear;
 		}
@@ -65,5 +66,10 @@ class UsuarioController extends AppController {
 	public function reps($id) {
 		$reportes = new Reporte ();
 		$this->data = $reportes->getReportesByUsuario ( $id );
+	}
+	
+	public function editar($id){
+		$usuario = new Usuario();
+		$this->data=$usuario->editUsuario($id, $_GET);
 	}
 }

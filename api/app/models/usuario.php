@@ -7,7 +7,6 @@ class Usuario extends ActiveRecord {
 		}
 	}
 	public function getTodos() {
-//cosas
 		return $this->find_all_by_sql ( 'SELECT * FROM usuario' );
 	}
 	public function createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto = null, $admin, $localidad) {
@@ -18,15 +17,49 @@ class Usuario extends ActiveRecord {
 		$usuario->email = $email;
 		$usuario->password = sha1 ( $password );
 		$usuario->localidad = $localidad;
-		if ($foto != '0') {
+		if ($foto != null && $foto != '') {
 			$usuario->foto = $foto;
+		} else {
+			$usuario->foto = '0';
 		}
 		$usuario->admin = $admin;
-		return $usuario->create ();
+		if($usuario->create ()==true){
+			return $usuario->create;
+		}else{
+			return '0';
+		}
 	}
-	
-	public function uploadImage(){
-		
+	public function editUsuario($id, $campos = null) {
+		$usuario = $this->find ( $id );
+		if ($usuario == true) {
+			if (isset ( $campos )) {
+				if ($campos ['nombre']) {
+					$usuario->nombre = $campos ['nombre'];
+				}
+				if ($campos ['apellidos']) {
+					$usuario->apellidos = $campos ['apellidos'];
+				}
+				if ($campos ['nombre_usuario']) {
+					$usuario->nombre_usuario = $campos ['nombre_usuario'];
+				}
+				if ($campos ['email']) {
+					$usuario->email = $campos ['email'];
+				}
+				if ($campos ['localidad']) {
+					$usuario->localidad = $campos ['localidad'];
+				}
+				$us = $usuario->update ();
+				if ($us != false) {
+					return $us;
+				} else {
+					return false;
+				}
+			} else {
+				return '00';
+			}
+		} else {
+			return '0';
+		}
 	}
 }
 ?>
