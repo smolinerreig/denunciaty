@@ -28,9 +28,13 @@ body {
 	z-index: 2;
 	opacity: 0.9;
 	background: white;
+	box-shadow: 2px 2px 5px #2e3436;
+	-webkit-box-shadow: 2px 2px 5px #2e3436;
+	-moz-box-shadow: 2px 2px 5px #2e3436;
+	filter: shadow(color = #2e3436, direction = 135, strength = 2);
 }
 
-#menu-principal *{
+#menu-principal * {
 	color: #224562;
 }
 
