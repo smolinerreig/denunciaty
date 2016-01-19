@@ -81,7 +81,6 @@ define ( 'CORE_PATH', dirname ( dirname ( APP_PATH ) ) . '/core/' );
 $number = isset ( $_SERVER ['PATH_INFO'] ) ? strlen ( urldecode ( $_SERVER ['PATH_INFO'] ) ) - 1 : 0;
 $number += empty ( $_SERVER ['QUERY_STRING'] ) ? 0 : strlen ( urldecode ( $_SERVER ['QUERY_STRING'] ) ) + 1;
 define ( 'PUBLIC_PATH', substr ( urldecode ( $_SERVER ['REQUEST_URI'] ), 0, - $number ) );
-
 /**
  * Obtiene la url
  */
@@ -89,7 +88,7 @@ $url = empty ( $_SERVER ['PATH_INFO'] ) ? '/' : $_SERVER ['PATH_INFO'];
 
 /**
  * Carga el gestor de arranque
- * Por defecto el bootstrap del core
+ * Por defecto el bootstrap del core 
  *
  * @see Bootstrap
  */

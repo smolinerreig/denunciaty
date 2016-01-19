@@ -19,36 +19,37 @@
 /**
  * Define marca de tiempo en que inicio el Request
  */
-define ( 'START_TIME', microtime ( TRUE ) );
+define('START_TIME', microtime(TRUE));
 
 /**
  * Esta sección prepara el entorno
  * Todo esto se puede hacer desde la configuracion del
  * Servidor/PHP, en caso de no poder usarlo desde ahí
- * Puedes descomentar estas lineas
+ * Puedes descomentar  estas lineas
  */
 
-// *Locale*
-// setlocale(LC_ALL, 'es_ES');
+//*Locale*
+//setlocale(LC_ALL, 'es_ES');
 
-// *Timezone*
-// ini_set('date.timezone', 'America/New_York');
+//*Timezone*
+//ini_set('date.timezone', 'America/New_York');
 
 /**
  * @TODO
  * REVISAR ESTA SECCIÓN
+ *
  */
-define ( 'APP_CHARSET', 'UTF-8' );
+define('APP_CHARSET', 'UTF-8');
 /**
  * Indicar si la aplicacion se encuentra en produccion
  * directamente desde el index.php
  */
-define ( 'PRODUCTION', FALSE );
+define('PRODUCTION', FALSE);
 
 /**
  * Establece polí­tica de informe de errores
  */
-// error_reporting(E_ALL ^ E_STRICT);ini_set('display_errors', 'On');
+//error_reporting(E_ALL ^ E_STRICT);ini_set('display_errors', 'On');
 
 /**
  * Define el APP_PATH
@@ -58,7 +59,7 @@ define ( 'PRODUCTION', FALSE );
  * - Esta ruta se utiliza para cargar los archivos de la aplicacion
  * - En producción, es recomendable ponerla manual
  */
-define ( 'APP_PATH', dirname ( __DIR__ ) . '/app/' );
+define('APP_PATH', dirname(__DIR__) . '/app/');
 
 /**
  * Define el CORE_PATH
@@ -66,7 +67,7 @@ define ( 'APP_PATH', dirname ( __DIR__ ) . '/app/' );
  * CORE_PATH:
  * - Ruta al directorio que contiene el núcleo de Kumbia (por defecto la ruta al directorio core)
  */
-define ( 'CORE_PATH', dirname ( dirname ( APP_PATH ) ) . '/core/' );
+define('CORE_PATH', dirname(dirname(APP_PATH)) . '/core/');
 
 /**
  * Define el PUBLIC_PATH
@@ -74,18 +75,19 @@ define ( 'CORE_PATH', dirname ( dirname ( APP_PATH ) ) . '/core/' );
  * PUBLIC_PATH:
  * - Path para genera la Url en los links a acciones y controladores
  * - Esta ruta la utiliza Kumbia como base para generar las Urls para acceder de lado de
- * cliente (con el navegador web) y es relativa al DOCUMENT_ROOT del servidor web
+ *   cliente (con el navegador web) y es relativa al DOCUMENT_ROOT del servidor web
  *
- * EN PRODUCCION ESTA CONSTANTE DEBERÍA SER ESTABLECIDA MANUALMENTE
+ *  EN PRODUCCION ESTA CONSTANTE DEBERÍA SER ESTABLECIDA MANUALMENTE
  */
-$number = isset ( $_SERVER ['PATH_INFO'] ) ? strlen ( urldecode ( $_SERVER ['PATH_INFO'] ) ) - 1 : 0;
-$number += empty ( $_SERVER ['QUERY_STRING'] ) ? 0 : strlen ( urldecode ( $_SERVER ['QUERY_STRING'] ) ) + 1;
-define ( 'PUBLIC_PATH', substr ( urldecode ( $_SERVER ['REQUEST_URI'] ), 0, - $number ) );
+$number = isset($_SERVER['PATH_INFO']) ? strlen(urldecode($_SERVER['PATH_INFO'])) - 1 : 0;
+$number += empty($_SERVER['QUERY_STRING']) ? 0 : strlen(urldecode($_SERVER['QUERY_STRING'])) + 1;
+define('PUBLIC_PATH', substr(urldecode($_SERVER['REQUEST_URI']), 0, -$number));
+
 
 /**
  * Obtiene la url
  */
-$url = empty ( $_SERVER ['PATH_INFO'] ) ? '/' : $_SERVER ['PATH_INFO'];
+$url = empty($_SERVER['PATH_INFO']) ? '/' : $_SERVER['PATH_INFO'];
 
 /**
  * Carga el gestor de arranque
@@ -93,5 +95,5 @@ $url = empty ( $_SERVER ['PATH_INFO'] ) ? '/' : $_SERVER ['PATH_INFO'];
  *
  * @see Bootstrap
  */
-// require APP_PATH . 'libs/bootstrap.php'; //bootstrap de app
+//require APP_PATH . 'libs/bootstrap.php'; //bootstrap de app
 require CORE_PATH . 'kumbia/bootstrap.php'; //bootstrap del core

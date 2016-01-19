@@ -23,9 +23,10 @@ class Usuario extends ActiveRecord {
 			$usuario->foto = '0';
 		}
 		$usuario->admin = $admin;
-		if($usuario->create ()==true){
-			return $usuario->create;
-		}else{
+		$us=$usuario->create();
+		if ($us == true) {
+			return $us;
+		} else {
 			return '0';
 		}
 	}
@@ -58,6 +59,27 @@ class Usuario extends ActiveRecord {
 				return '00';
 			}
 		} else {
+			return '0';
+		}
+	}
+	public function deleteUsuario($id) {
+		$usuario = $this->find ( $id );
+		if($usuario==true){
+			return $usuario->delete();
+		}else{
+			return '0';
+		}
+	}
+	public function editPassword($id, $old_pass, $new_pass){
+		$usuario = $this->find($id);
+		if(sha1($old_pass)==$usuario->password){
+			$usuario->password=sha1($new_pass);
+			if($usuario->update()==true){
+				return $usuario->update();
+			}else{
+				return '00';
+			}
+		}else{
 			return '0';
 		}
 	}

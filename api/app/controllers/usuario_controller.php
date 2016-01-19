@@ -57,13 +57,7 @@ class UsuarioController extends AppController {
 	 */
 	public function nuevo($nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad) {
 		$usuario = new Usuario ();
-		
-		$crear = $usuario->createUsuario ( $nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad );
-		if ($crear == false) {
-			$this->data = 0;
-		} else {
-			$this->data = $crear;
-		}
+		return $usuario->createUsuario ( $nombre, $apellidos, $nombre_usuario, $email, $password, $foto, $admin, $localidad );
 	}
 	/**
 	 * Devuelve un array con los reportes creados por un usuario
@@ -91,5 +85,15 @@ class UsuarioController extends AppController {
 	public function editar($id){
 		$usuario = new Usuario();
 		$this->data=$usuario->editUsuario($id, $_GET);
+	}
+	
+	public function borrar($id){
+		$usuario=new Usuario();
+		$this->data=$usuario->deleteUsuario($id);
+	}
+	
+	public function cambiarPass($id, $old_pass, $new_pass){
+		$usuario=new Usuario();
+		$this->data=$usuario->editPassword($id, $old_pass, $new_pass);
 	}
 }

@@ -1,0 +1,55 @@
+.no-side-padding {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.no-side-margin {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#navbar-collapse>form {
+	padding: 0px 0px;
+}
+
+#menu-principal, .panel-default .panel-heading .panel-title{
+	font-family: 'Play', serif;
+}
+#menu-principal {
+	border-radius: 0px;
+	border-width: 0px 0px 1px 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	opacity: 0.9;
+}
+
+#menu-principal input, #menu-principal button {
+	border-radius: 0px;
+}
+
+.col-xs-12.no-side-margin.no-side-padding{
+	margin-bottom: 10px;
+}
+
+hr{
+	opacity: 0;
+}
+
+.panel-heading{
+	height: auto;
+}
+
+.footer{
+	background-color:#224562;
+	color: white;
+}
+.panel-default .panel-heading{
+	background-color:#224562;
+	color: white;
+	border-radius:3px 3px 0px 0px;
+}
+
+.panel.panel-default{
+	border-radius:4px 4px 0px 0px;
+}
