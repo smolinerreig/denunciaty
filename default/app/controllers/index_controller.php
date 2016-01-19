@@ -12,11 +12,27 @@ class IndexController extends AppController {
 		
 		if (Input::hasPost ( 'usuario' ) && Input::hasPost ( 'password' )) {
 			$us = new Usuario ();
-			$log=$us->login ($_POST);
+			if($log=$us->login ($_POST)){
+				Flash::valid('Bienvenido a la administración de Denúnciaty.');
+			}else{
+				Flash::error('Sus datos no son correctos. Intentelo de nuevo.');
+			}
 		} else {
-			
+			Flash::error('Introduzca usuario y contraseña válidos para hacer login.');
 		}
 		
 		Redirect::to ( 'index' );
+	}
+	
+	public function logout(){
+		View::select ( 'null' );
+		$us = new Usuario ();
+		if($us->logout()==true){
+			Flash::valid('Se ha cerrado su sesión.');
+		}else{
+			Flash::error('No ha podido cerrarse la sesión. Inténtelo de nuevo.');
+		}
+		Redirect::to ( 'index' );
+		
 	}
 }

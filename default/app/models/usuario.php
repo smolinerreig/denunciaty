@@ -4,9 +4,15 @@ class Usuario extends ActiveRecord {
 		$usuario = $post ['usuario'];
 		$password = sha1 ( $post ['password'] );
 		
-		$auth = new Auth ( "model", "class: Usuario", "nombre_usuario: {$usuario}", "password: {$password}");
-		if($auth->authenticate()){
-			
+		$auth = new Auth ( "model", "class: Usuario", "nombre_usuario: {$usuario}", "password: {$password}" );
+		if ($auth->authenticate ()) {
+			return true;
+		} else {
+			return false;
 		}
+	}
+	public function logout() {
+		Auth::destroy_identity ();
+		return true;
 	}
 }

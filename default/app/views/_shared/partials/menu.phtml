@@ -14,6 +14,7 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar-collapse">
+		<?php if($_SESSION['KUMBIA_AUTH_VALID']['default']==1){ ?> 
 			<ul class="nav navbar-nav">
 				<li class=""><a href="#">Usuarios</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -26,6 +27,7 @@
 						<li><a href="#">Todos</a></li>
 					</ul></li>
 			</ul>
+			<?php }?>
 			<?php if(!$_SESSION['KUMBIA_AUTH_VALID']['default']==1){ ?> 
 			<?php echo Form::open('index/login','post','class="navbar-form navbar-right"')?>
 			<div>
@@ -42,10 +44,10 @@
 			<?php echo Form::close();?>
 			<?php }else{?>
 			<ul class="nav navbar-nav navbar-right">
-				<li class=""><a id="cerrar-sesion" class="text-error" href="#">Cerrar sesión</a></li>
+				<li class=""><a id="cerrar-sesion" class="text-error" href="index/logout">Cerrar sesión</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
-				Bienvenido, <a href="#" class="navbar-link"><?php echo Auth::get('nombre_usuario')?>&nbsp;</a>
+				Bienvenido, <a href="datos" class="navbar-link"><?php echo Auth::get('nombre_usuario')?>&nbsp;</a>
 			</p>
 			
 			

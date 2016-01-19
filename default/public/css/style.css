@@ -8,13 +8,18 @@
 	margin-left: 0px;
 }
 
+body {
+	
+}
+
 #navbar-collapse>form {
 	padding: 0px 0px;
 }
 
-#menu-principal, .panel-default .panel-heading .panel-title{
+#menu-principal, .panel-default .panel-heading .panel-title {
 	font-family: 'Play', serif;
 }
+
 #menu-principal {
 	border-radius: 0px;
 	border-width: 0px 0px 1px 0px;
@@ -22,38 +27,46 @@
 	width: 100%;
 	z-index: 2;
 	opacity: 0.9;
+	background: white;
+}
+
+#menu-principal *{
+	color: #224562;
+}
+
+#cerrar-sesion {
+	color: #612245;
+	padding-right: 0px;
+	font-size: 1.2em;
 }
 
 #menu-principal input, #menu-principal button {
 	border-radius: 0px;
 }
 
-.col-xs-12.no-side-margin.no-side-padding{
+.col-xs-12.no-side-margin.no-side-padding {
 	margin-bottom: 10px;
 }
 
-hr{
+hr {
 	opacity: 0;
 }
 
-.panel-heading{
+.panel-heading {
 	height: auto;
 }
 
-.footer{
-	background-color:#224562;
+.footer {
+	background-color: #224562;
 	color: white;
 }
-.panel-default .panel-heading{
-	background-color:#224562;
+
+.panel-default .panel-heading {
+	background-color: #224562;
 	color: white;
-	border-radius:3px 3px 0px 0px;
+	border-radius: 3px 3px 0px 0px;
 }
 
-.panel.panel-default{
-	border-radius:4px 4px 0px 0px;
-}
-
-#cerrar-sesion{
-	color:#612245;
+.panel.panel-default {
+	border-radius: 4px 4px 0px 0px;
 }
