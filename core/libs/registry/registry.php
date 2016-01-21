@@ -27,71 +27,72 @@
  * Permite almacenar valores durante la ejecución de la aplicación. Implementa el
  * patrón de diseño Registry
  *
- * @category Kumbia
- * @package security
- *         
+ * @category   Kumbia
+ * @package    security
+ *
  */
-class Registry {
-	
-	/**
-	 * Variable donde se guarda el registro
-	 *
-	 * @var array
-	 */
-	private static $registry = array ();
-	
-	/**
-	 * Establece un valor del registro
-	 *
-	 * @param string $index        	
-	 * @param string $value        	
-	 */
-	public static function set($index, $value) {
-		self::$registry [$index] = $value;
-	}
-	
-	/**
-	 * Agrega un valor al registro a uno ya establecido
-	 *
-	 * @param string $index        	
-	 * @param string $value        	
-	 */
-	public static function append($index, $value) {
-		self::exist ( $index );
-		self::$registry [$index] [] = $value;
-	}
-	
-	/**
-	 * Agrega un valor al registro al inicio de uno ya establecido
-	 *
-	 * @param string $index        	
-	 * @param string $value        	
-	 */
-	public static function prepend($index, $value) {
-		self::exist ( $index );
-		array_unshift ( self::$registry [$index], $value );
-	}
-	
-	/**
-	 * Obtiene un valor del registro
-	 *
-	 * @param string $index        	
-	 * @return mixed
-	 */
-	public static function get($index) {
-		if (isset ( self::$registry [$index] )) {
-			return self::$registry [$index];
-		}
-	}
-	
-	/**
-	 * Crea un index si no existe
-	 *
-	 * @param string $index        	
-	 */
-	protected function exist($index) {
-		if (! isset ( self::$registry [$index] )) {
-			self::$registry [$index] = array ();
-		}
-	}
+class Registry
+{
+
+    /**
+     * Variable donde se guarda el registro
+     *
+     * @var array
+     */
+    private static $registry = array();
+
+    /**
+     * Establece un valor del registro
+     *
+     * @param string $index
+     * @param string $value
+     */
+    public static function set($index, $value)
+    {
+        self::$registry[$index] = $value;
+    }
+
+    /**
+     * Agrega un valor al registro a uno ya establecido
+     *
+     * @param string $index
+     * @param string $value
+     */
+    public static function append($index, $value)
+    {
+        if (!isset(self::$registry[$index])) {
+            self::$registry[$index] = array();
+        }
+        self::$registry[$index][] = $value;
+    }
+
+    /**
+     * Agrega un valor al registro al inicio de uno ya establecido
+     *
+     * @param string $index
+     * @param string $value
+     */
+    public static function prepend($index, $value)
+    {
+        if (!isset(self::$registry[$index])) {
+            self::$registry[$index] = array();
+        }
+        array_unshift(self::$registry[$index], $value);
+    }
+
+    /**
+     * Obtiene un valor del registro
+     *
+     * @param string $index
+     * @return mixed
+     */
+    public static function get($index)
+    {
+        if (isset(self::$registry[$index])) {
+            return self::$registry[$index];
+        } else {
+            return null;
+        }
+    }
+
 }

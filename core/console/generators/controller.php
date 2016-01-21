@@ -1,10 +1,10 @@
 /**
- * Controlador <?= $class, PHP_EOL?>
+ * Controlador <?php echo $class, PHP_EOL ?>
  * 
  * @category App
  * @package Controllers
  */
-class <?= $class ?>Controller extends AppController
+class <?php echo $class ?>Controller extends AppController
 {
 
 }

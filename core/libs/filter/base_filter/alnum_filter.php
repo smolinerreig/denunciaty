@@ -22,29 +22,32 @@
 /**
  * Filtra una cadena haciendo alfa numerica
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class AlnumFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		/**
-		 * Revisa si PCRE esta compilado para soportar UNICODE
-		 * de esta forma filtra tambien tildes y otros caracteres latinos
-		 */
-		if (preg_match ( '/\pL/u', 'a' )) {
-			$patron = '/[^\p{L}\p{N}]/';
-		} else {
-			$patron = '/[^a-zA-Z0-9\s]/';
-		}
-		return preg_replace ( $patron, '', ( string ) $s );
-	}
+class AlnumFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        /**
+         * Revisa si PCRE esta compilado para soportar UNICODE
+         * de esta forma filtra tambien tildes y otros caracteres latinos
+         */
+        if (@preg_match('/\pL/u', 'a')) {
+            $patron = '/[^\p{L}\p{N}]/';
+        } else {
+            $patron = '/[^a-zA-Z0-9\s]/';
+        }
+        return preg_replace($patron, '', (string) $s);
+    }
+
 }

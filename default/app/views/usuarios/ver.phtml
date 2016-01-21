@@ -1,24 +1,23 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-<?php echo Form::openMultipart('usuarios/ver/'.$data->id, 'get')?>
-<div>
-			<div class="form-group">
-				<label for="id">ID</label> <input
-					type="email" class="form-control" id="exampleInputEmail1"
-					placeholder="Email">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label> <input
-					type="password" class="form-control" id="exampleInputPassword1"
-					placeholder="Password">
-			</div>
+		<?php echo Form::open('usuarios/ver')?>
+			<div>
+				<div class="form-group">
+					<label for="id">ID</label> <input name="tutia" type="email" class="form-control"
+						id="exampleInputEmail1" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label> <input
+						type="password" class="form-control" id="exampleInputPassword1"
+						placeholder="Password">
+				</div>
 
-			<div class="checkbox">
-				<label> <input type="checkbox"> Check me out
-				</label>
+				<div class="checkbox">
+					<label> <input type="checkbox"> Check me out
+					</label>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</div>
-<?php echo Form::close()?>
+		<?php echo Form::close()?>
 	</div>
 </div>

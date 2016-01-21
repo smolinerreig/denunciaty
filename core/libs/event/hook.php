@@ -21,8 +21,10 @@
 /**
  * Clase padre de los hooks
  *
- * @category Kumbia
- * @package Event
+ * @category   Kumbia
+ * @package    Event
  */
-abstract class Hook {
+abstract class Hook
+{
+
 }

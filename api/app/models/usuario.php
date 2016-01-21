@@ -1,4 +1,5 @@
 <?php
+
 class Usuario extends ActiveRecord {
 	public function getUsuario($id) {
 		$us = $this->find_by_sql ( 'SELECT * FROM usuario WHERE id = ' . $id . '' );

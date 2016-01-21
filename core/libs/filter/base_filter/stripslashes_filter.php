@@ -19,24 +19,26 @@
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
 
-/**
- * Filtra una cadena haciendo stripslashes
+/** Filtra una cadena haciendo stripslashes
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
- *            
+ *
  */
-class StripslashesFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		return stripslashes ( ( string ) $s );
-	}
+class StripslashesFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        return stripslashes((string) $s);
+    }
+
 }

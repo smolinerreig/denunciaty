@@ -1,10 +1,10 @@
 /**
- * Modelo <?= $class, PHP_EOL?>
+ * Modelo <?php echo $class, PHP_EOL ?>
  * 
  * @category App
  * @package Models
  */
-class <?= $class ?> extends ActiveRecord
+class <?php echo $class ?> extends ActiveRecord
 {
 
 }

@@ -19,82 +19,92 @@
  */
 
 /**
- * Clase para la carga de Archivos .
- * INI y de configuración
+ * Clase para la carga de Archivos .INI y de configuración
  *
  * Aplica el patrón Singleton que utiliza un array
  * indexado por el nombre del archivo para evitar que
  * un .ini de configuración sea leido mas de una
  * vez en runtime con lo que aumentamos la velocidad.
  *
- * @category Kumbia
- * @package Config
+ * @category   Kumbia
+ * @package    Config
  */
-class Config {
-	
-	/**
-	 * Contenido de variables de configuracion
-	 *
-	 * @var array
-	 */
-	protected static $_vars = array ();
-	
-	/**
-	 * Obtiene un atributo de configuracion
-	 *
-	 * @param string $var
-	 *        	nombre de variable de configuracion
-	 * @return mixed
-	 */
-	public static function get($var) {
-		$namespaces = explode ( '.', $var );
-		switch (count ( $namespaces )) {
-			case 3 :
-				return isset ( self::$_vars [$namespaces [0]] [$namespaces [1]] [$namespaces [2]] ) ? self::$_vars [$namespaces [0]] [$namespaces [1]] [$namespaces [2]] : NULL;
-			case 2 :
-				return isset ( self::$_vars [$namespaces [0]] [$namespaces [1]] ) ? self::$_vars [$namespaces [0]] [$namespaces [1]] : NULL;
-			case 1 :
-				return isset ( self::$_vars [$namespaces [0]] ) ? self::$_vars [$namespaces [0]] : NULL;
-		}
-	}
-	
-	/**
-	 * Asigna un atributo de configuracion
-	 *
-	 * @param string $var
-	 *        	variable de configuracion
-	 * @param mixed $value
-	 *        	valor para atributo
-	 */
-	public static function set($var, $value) {
-		$namespaces = explode ( '.', $var );
-		switch (count ( $namespaces )) {
-			case 3 :
-				self::$_vars [$namespaces [0]] [$namespaces [1]] [$namespaces [2]] = $value;
-				break;
-			case 2 :
-				self::$_vars [$namespaces [0]] [$namespaces [1]] = $value;
-				break;
-			case 1 :
-				self::$_vars [$namespaces [0]] = $value;
-				break;
-		}
-	}
-	
-	/**
-	 * Lee un archivo de configuracion
-	 *
-	 * @param string $file
-	 *        	archivo .ini
-	 * @param boolean $force
-	 *        	forzar lectura de .ini
-	 * @return array
-	 */
-	public static function &read($file, $force = FALSE) {
-		if (isset ( self::$_vars [$file] ) && ! $force) {
-			return self::$_vars [$file];
-		}
-		self::$_vars [$file] = parse_ini_file ( APP_PATH . "config/$file.ini", TRUE );
-		return self::$_vars [$file];
-	}
+final class Config
+{
+
+    /**
+     * Contenido de variables de configuracion
+     *
+     * @var array
+     */
+    protected static $_vars = array();
+
+    /**
+     * Obtiene un atributo de configuracion
+     *
+     * @param string $var nombre de variable de configuracion
+     * @return mixed
+     */
+    public static function get($var)
+    {
+        $namespaces = explode('.', $var);
+        switch (count($namespaces)) {
+            case 3:
+                if (isset(self::$_vars[$namespaces[0]][$namespaces[1]][$namespaces[2]])) {
+                    return self::$_vars[$namespaces[0]][$namespaces[1]][$namespaces[2]];
+                }
+                break;
+            case 2:
+                if (isset(self::$_vars[$namespaces[0]][$namespaces[1]])) {
+                    return self::$_vars[$namespaces[0]][$namespaces[1]];
+                }
+                break;
+            case 1:
+                if (isset(self::$_vars[$namespaces[0]])) {
+                    return self::$_vars[$namespaces[0]];
+                }
+                break;
+        }
+        return NULL;
+    }
+
+    /**
+     * Asigna un atributo de configuracion
+     *
+     * @param string $var variable de configuracion
+     * @param mixed $value valor para atributo
+     */
+    public static function set($var, $value)
+    {
+        $namespaces = explode('.', $var);
+        switch (count($namespaces)) {
+            case 3:
+                self::$_vars[$namespaces[0]][$namespaces[1]][$namespaces[2]] = $value;
+                break;
+            case 2:
+                self::$_vars[$namespaces[0]][$namespaces[1]] = $value;
+                break;
+            case 1:
+                self::$_vars[$namespaces[0]] = $value;
+                break;
+        }
+    }
+
+    /**
+     * Lee un archivo de configuracion
+     *
+     * @param $file archivo .ini
+     * @param boolean $force forzar lectura de .ini
+     * @return array
+     */
+    public static function & read($file, $force = FALSE)
+    {
+        if (isset(self::$_vars[$file]) && !$force) {
+            return self::$_vars[$file];
+        }
+
+        self::$_vars[$file] = parse_ini_file(APP_PATH . "config/$file.ini", TRUE);
+        return self::$_vars[$file];
+    }
+
 }

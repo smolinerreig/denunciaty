@@ -22,20 +22,23 @@
 /**
  * Filtra una cadena para que solo contenga numero enteros
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class IntFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return int
-	 */
-	public static function execute($s, $options) {
-		return ( int ) $s;
-	}
+class IntFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $value
+     * @param array $options
+     * @return int
+     */
+    public static function execute($s, $options)
+    {
+        return (int) $s;
+    }
+
 }

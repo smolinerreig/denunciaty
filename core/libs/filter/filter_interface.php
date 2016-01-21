@@ -21,19 +21,18 @@
 /**
  * Interface para los filtros
  *
- * @category Kumbia
- * @package Filter
+ * @category  Kumbia
+ * @package   Filter
  */
-interface FilterInterface {
-	
-	/**
-	 * Metodo para ejecutar el filtro
-	 *
-	 * @param string $s
-	 *        	cadena a filtrar
-	 * @param array $options
-	 *        	opciones para el filtro
-	 */
-	public static function execute($s, $options);
+interface FilterInterface
+{
+
+    /**
+     * Metodo para ejecutar el filtro
+     *
+     * @param string $s cadena a filtrar
+     * @param array $options opciones para el filtro
+     */
+    public static function execute($s, $options);
 }
 

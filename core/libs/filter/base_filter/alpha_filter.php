@@ -22,20 +22,23 @@
 /**
  * Filtra una cadena haciendo alpha
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class AlphaFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 */
-	public static function execute($s, $options) {
-		$patron = '/[^a-zA-Z\s]/';
-		return preg_replace ( $patron, '', ( string ) $s );
-	}
+class AlphaFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     */
+    public static function execute($s, $options)
+    {
+        $patron = '/[^a-zA-Z\s]/';
+        return preg_replace($patron, '', (string) $s);
+    }
+
 }

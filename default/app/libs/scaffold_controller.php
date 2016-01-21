@@ -14,7 +14,7 @@ class ScaffoldController extends AdminController
 
     public function index($page=1)
     {
-        $this->data = Load::model($this->model)->paginate("page: $page", 'order: id desc');
+        $this->results = Load::model($this->model)->paginate("page: $page", 'order: id desc');
     }
 
     /**
@@ -78,7 +78,7 @@ class ScaffoldController extends AdminController
      */
     public function ver($id)
     {
-        $this->data = Load::model($this->model)->find_first((int) $id);
+        $this->result = Load::model($this->model)->find_first((int) $id);
     }
 
 }

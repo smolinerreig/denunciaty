@@ -21,162 +21,157 @@
 /**
  * Helper que utiliza Ajax
  *
- * @category KumbiaPHP
- * @package Helpers
+ * @category   KumbiaPHP
+ * @package    Helpers
  */
-class Ajax {
-	
-	/**
-	 * Crea un enlace en una Aplicacion actualizando la capa con ajax
-	 *
-	 * @param string $action
-	 *        	ruta a la accion
-	 * @param string $text
-	 *        	texto a mostrar
-	 * @param string $update
-	 *        	capa a actualizar
-	 * @param string $class
-	 *        	clases adicionales
-	 * @param string|array $attrs
-	 *        	atributos adicionales
-	 * @return string
-	 */
-	public static function link($action, $text, $update, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		return '<a href="' . PUBLIC_PATH . "$action\" class=\"js-remote $class\" data-to=\"{$update}\" $attrs>$text</a>";
-	}
-	
-	/**
-	 * Crea un enlace a una acción actualizando la capa con ajax
-	 *
-	 * @param string $action
-	 *        	ruta a la accion
-	 * @param string $text
-	 *        	texto a mostrar
-	 * @param string $update
-	 *        	capa a actualizar
-	 * @param string $class
-	 *        	clases adicionales
-	 * @param string|array $attrs
-	 *        	atributos adicionales
-	 * @return string
-	 */
-	public static function linkAction($action, $text, $update, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		return '<a href="' . PUBLIC_PATH . Router::get ( 'controller_path' ) . "/$action\" class=\"js-remote $class\" data-to=\"{$update}\" $attrs>$text</a>";
-	}
-	
-	/**
-	 * Crea un enlace en una Aplicacion actualizando la capa con ajax con mensaje
-	 * de confirmacion
-	 *
-	 * @param string $action
-	 *        	ruta a la accion
-	 * @param string $text
-	 *        	texto a mostrar
-	 * @param string $update
-	 *        	capa a actualizar
-	 * @param string $confirm
-	 *        	mensaje de confirmacion
-	 * @param string $class
-	 *        	clases adicionales
-	 * @param string|array $attrs
-	 *        	atributos adicionales
-	 * @return string
-	 */
-	public static function linkConfirm($action, $text, $update, $confirm, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		return '<a href="' . PUBLIC_PATH . "$action\" class=\"js-remote-confirm $class\" data-to=\"{$update}\" title=\"$confirm\" $attrs>$text</a>";
-	}
-	
-	/**
-	 * Crea un enlace a una acción actualizando la capa con ajax con mensaje
-	 * de confirmacion
-	 *
-	 * @param string $action
-	 *        	ruta a la accion
-	 * @param string $text
-	 *        	texto a mostrar
-	 * @param string $update
-	 *        	capa a actualizar
-	 * @param string $confirm
-	 *        	mensaje de confirmacion
-	 * @param string $class
-	 *        	clases adicionales
-	 * @param string|array $attrs
-	 *        	atributos adicionales
-	 * @return string
-	 */
-	public static function linkActionConfirm($action, $text, $update, $confirm, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		return '<a href="' . PUBLIC_PATH . Router::get ( 'controller_path' ) . "/$action\" class=\"js-remote-confirm $class\" data-to=\"{$update}\" title=\"$confirm\" $attrs>$text</a>";
-	}
-	
-	/**
-	 * Lista desplegable para actualizar usando ajax
-	 *
-	 * @param string $field
-	 *        	nombre de campo
-	 * @param array $data        	
-	 * @param string $update
-	 *        	capa que se actualizara
-	 * @param string $action
-	 *        	accion que se ejecutara
-	 * @param string $class        	
-	 * @param string|array $attrs        	
-	 */
-	public static function select($field, $data, $update, $action, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		// ruta a la accion
-		$action = PUBLIC_PATH . rtrim ( $action, '/' ) . '/';
-		// genera el campo
-		return Form::select ( $field, $data, "class=\"js-remote $class\" data-update=\"$update\" data-url=\"$action\" $attrs" );
-	}
-	
-	/**
-	 * Lista desplegable para actualizar usando ajax que toma los valores de un array de objetos
-	 *
-	 * @param string $field
-	 *        	nombre de campo
-	 * @param string $show
-	 *        	campo que se mostrara
-	 * @param array $data
-	 *        	Array('modelo','metodo','param')
-	 * @param string $update
-	 *        	capa que se actualizara
-	 * @param string $action
-	 *        	accion que se ejecutara
-	 * @param string $blank
-	 *        	campo en blanco
-	 * @param string $class        	
-	 * @param string|array $attrs        	
-	 */
-	public static function dbSelect($field, $show, $data, $update, $action, $blank = null, $class = '', $attrs = '') {
-		$attrs = Tag::getAttrs ( $attrs );
-		// ruta a la accion
-		$action = PUBLIC_PATH . rtrim ( $action, '/' ) . '/';
-		
-		// genera el campo
-		return Form::dbSelect ( $field, $show, $data, $blank, "class=\"js-remote $class\" data-update=\"$update\" data-url=\"$action\" $attrs" );
-	}
-	
-	/**
-	 * Genera un formulario Ajax
-	 *
-	 * @param string $update
-	 *        	capa que se actualizara
-	 * @param string $action
-	 *        	accion a ejecutar
-	 * @param string $class
-	 *        	clase de estilo
-	 * @param string $method
-	 *        	metodo de envio
-	 * @param string|array $attrs
-	 *        	atributos
-	 * @return string
-	 */
-	public static function form($update, $action = '', $class = '', $method = 'post', $attrs = '') {
-		$attrs = "class=\"js-remote $class\" data-to=\"$update\" " . Tag::getAttrs ( $attrs );
-		return Form::open ( $action, $method, $attrs );
-	}
+class Ajax
+{
+
+    /**
+     * Crea un enlace en una Aplicacion actualizando la capa con ajax
+     *
+     * @param string $action ruta a la accion
+     * @param string $text texto a mostrar
+     * @param string $update capa a actualizar
+     * @param string $class clases adicionales
+     * @param string|array $attrs atributos adicionales
+     * @return string
+     */
+    public static function link($action, $text, $update, $class=NULL, $attrs=NULL)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+        return '<a href="' . PUBLIC_PATH . "$action\" class=\"js-remote $class\" data-to=\"{$update}\" $attrs>$text</a>";
+    }
+
+    /**
+     * Crea un enlace a una acción actualizando la capa con ajax
+     *
+     * @param string $action ruta a la accion
+     * @param string $text texto a mostrar
+     * @param string $update capa a actualizar
+     * @param string $class clases adicionales
+     * @param string|array $attrs atributos adicionales
+     * @return string
+     */
+    public static function linkAction($action, $text, $update, $class=NULL, $attrs=NULL)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+        return '<a href="' . PUBLIC_PATH . Router::get('controller_path') . "/$action\" class=\"js-remote $class\" data-to=\"{$update}\" $attrs>$text</a>";
+    }
+
+    /**
+     * Crea un enlace en una Aplicacion actualizando la capa con ajax con mensaje
+     * de confirmacion
+     *
+     * @param string $action ruta a la accion
+     * @param string $text texto a mostrar
+     * @param string $update capa a actualizar
+     * @param string $confirm mensaje de confirmacion
+     * @param string $class clases adicionales
+     * @param string|array $attrs atributos adicionales
+     * @return string
+     */
+    public static function linkConfirm($action, $text, $update, $confirm, $class=NULL, $attrs=NULL)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+        return '<a href="' . PUBLIC_PATH . "$action\" class=\"js-remote-confirm $class\" data-to=\"{$update}\" title=\"$confirm\" $attrs>$text</a>";
+    }
+
+    /**
+     * Crea un enlace a una acción actualizando la capa con ajax con mensaje
+     * de confirmacion
+     *
+     * @param string $action ruta a la accion
+     * @param string $text texto a mostrar
+     * @param string $update capa a actualizar
+     * @param string $confirm mensaje de confirmacion
+     * @param string $class clases adicionales
+     * @param string|array $attrs atributos adicionales
+     * @return string
+     */
+    public static function linkActionConfirm($action, $text, $update, $confirm, $class=NULL, $attrs=NULL)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+        return '<a href="' . PUBLIC_PATH . Router::get('controller_path') . "/$action\" class=\"js-remote-confirm $class\" data-to=\"{$update}\" title=\"$confirm\" $attrs>$text</a>";
+    }
+
+    /**
+     * Lista desplegable para actualizar usando ajax
+     *
+     * @param string $field nombre de campo
+     * @param array $data
+     * @param string $update capa que se actualizara
+     * @param string $action accion que se ejecutara
+     * @param string $class
+     * @param string|array $attrs
+     */
+    public static function select($field, $data, $update, $action, $class=null, $attrs=null)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+
+        // ruta a la accion
+        $action = PUBLIC_PATH . rtrim($action, '/') . '/';
+
+        // genera el campo
+        return Form::select($field, $data, "class=\"js-remote $class\" data-update=\"$update\" data-url=\"$action\" $attrs");
+    }
+
+    /**
+     * Lista desplegable para actualizar usando ajax que toma los valores de un array de objetos
+     *
+     * @param string $field nombre de campo
+     * @param string $show campo que se mostrara
+     * @param array  $data Array('modelo','metodo','param')
+     * @param string $update capa que se actualizara
+     * @param string $action accion que se ejecutara
+     * @param string $blank campo en blanco
+     * @param string $class
+     * @param string|array $attrs
+     */
+    public static function dbSelect($field, $show, $data, $update, $action, $blank=null, $class=null, $attrs=null)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+
+        // ruta a la accion
+        $action = PUBLIC_PATH . rtrim($action, '/') . '/';
+
+        // genera el campo
+        return Form::dbSelect($field, $show, $data, $blank, "class=\"js-remote $class\" data-update=\"$update\" data-url=\"$action\" $attrs");
+    }
+
+    /**
+     * Genera un formulario Ajax
+     *
+     * @param string $update capa que se actualizara
+     * @param string $action accion a ejecutar
+     * @param string $class clase de estilo
+     * @param string $method metodo de envio
+     * @param string|array $attrs atributos
+     * @return string
+     */
+    public static function form($update, $action = NULL, $class = NULL, $method = 'post', $attrs = NULL)
+    {
+        if (is_array($attrs)) {
+            $attrs = Tag::getAttrs($attrs);
+        }
+        if ($action) {
+            $action = PUBLIC_PATH . $action;
+        } else {
+            $action = PUBLIC_PATH . ltrim(Router::get('route'), '/');
+        }
+        return "<form action=\"$action\" method=\"$method\" class=\"js-remote $class\" data-to=\"$update\" $attrs>";
+    }
+
 }

@@ -22,21 +22,24 @@
 /**
  * Filtra una cadena Htmlspecial
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class HtmlspecialcharsFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		$charset = (isset ( $options ['charset'] ) && $options ['charset']) ? $options ['charset'] : APP_CHARSET;
-		return htmlspecialchars ( ( string ) $s, ENT_QUOTES, $charset );
-	}
+class HtmlspecialcharsFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        $charset = (isset($options['charset']) && $options['charset']) ? $options['charset'] : APP_CHARSET;
+        return htmlspecialchars((string) $s, ENT_QUOTES, $charset);
+    }
+
 }

@@ -22,22 +22,25 @@
 /**
  * Filtra una cadena para que contenga solo Numeric
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
- *            
+ *
  */
-class NumericFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		$patron = '/[^0-9\.]/';
-		return preg_replace ( $patron, '', ( string ) $s );
-	}
+class NumericFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        $patron = '/[^0-9\.]/';
+        return preg_replace($patron, '', (string) $s);
+    }
+
 }

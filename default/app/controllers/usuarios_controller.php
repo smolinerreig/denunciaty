@@ -1,5 +1,5 @@
 <?php
-
+Load::model('usuario');
 /**
  * Controller por defecto si no se usa el routes
  *
@@ -18,13 +18,15 @@ class UsuariosController extends AppController {
 	 * @param int $id        	
 	 */
 	public function ver($id = null) {
-		$usuario = new Usuario ();
+		
 		
 		// $this->data = $usuario->getUsuario ( $id );
 		
-		echo '<pre>';
-		print_r ( $_GET );
-		exit ();
+		if($_POST){
+			echo '<pre>';
+			print_r($_POST);
+			exit;
+		}
 	}
 	/**
 	 * Introduce un nuevo usuario en la base de datos

@@ -130,38 +130,38 @@
 		 */
 		bind : function() {
             // Enlace y boton con confirmacion
-            $("body").on('click', "a.js-confirm, input.js-confirm",this.cConfirm);
+			$("a.js-confirm, input.js-confirm").on('click', this.cConfirm);
 
             // Enlace ajax
-            $("body").on('click', "a.js-remote",this.cRemote);
+			$("a.js-remote").on('click', this.cRemote);
 
             // Enlace ajax con confirmacion
-            $("body").on('click', "a.js-remote-confirm",this.cRemoteConfirm);
+			$("a.js-remote-confirm").on('click', this.cRemoteConfirm);
 
             // Efecto show
-            $("body").on('click', "a.js-show",this.cFx('show'));
+			$("a.js-show").on('click', this.cFx('show'));
 
             // Efecto hide
-            $("body").on('click', "a.js-hide",this.cFx('hide'));
+			$("a.js-hide").on('click', this.cFx('hide'));
 
             // Efecto toggle
-            $("body").on('click', "a.js-toggle",this.cFx('toggle'));
+			$("a.js-toggle").on('click', this.cFx('toggle'));
 
             // Efecto fadeIn
-            $("body").on('click', "a.js-fade-in",this.cFx('fadeIn'));
+			$("a.js-fade-in").on('click', this.cFx('fadeIn'));
 
             // Efecto fadeOut
-            $("body").on('click', "a.js-fade-out",this.cFx('fadeOut'));
+			$("a.js-fade-out").on('click', this.cFx('fadeOut'));
 
             // Formulario ajax
-            $("body").on('submit',"form.js-remote", this.cFRemote);
+			$("form.js-remote").on('submit', this.cFRemote);
 
             // Lista desplegable que actualiza con ajax
-            $("body").on('change',"select.js-remote", this.cUpdaterSelect);
+            $("select.js-remote").on('change', this.cUpdaterSelect);
 
             // Enlazar DatePicker
 			$.KumbiaPHP.bindDatePicker();
-			
+
 		},
 
         /**
@@ -188,13 +188,13 @@
 				$.getScript($.KumbiaPHP.publicPath + 'javascript/jquery/jquery.' + $.KumbiaPHP.plugin[i] + '.js', function(data, text){});
             }
 		},
-		
+
 		/**
 		 * Carga y Enlaza Unobstrusive DatePicker en caso de ser necesario
 		 *
 		 */
 		bindDatePicker: function() {
-			
+
 			// Selecciona los campos input
 			var inputs = $('input.js-datepicker');
 			/**
@@ -248,7 +248,7 @@
 			$(function(){
 				$.KumbiaPHP.bind();
 				$.KumbiaPHP.autoload();
-				
+
 			});
 		}
 	}

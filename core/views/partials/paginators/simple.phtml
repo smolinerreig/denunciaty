@@ -24,25 +24,22 @@
  * @copyright  Copyright (c) 2005-2015 Kumbia Team (http://www.kumbiaphp.com)
  * @license    http://wiki.kumbiaphp.com/Licencia     New BSD License
  */
-if (! isset ( $url )) {
-	extract ( Router::get () );
-	$url = "$controller/page";
-	if ($module) {
-		$url = "$module/$url";
-	}
+
+if(!isset($url)) {
+    extract(Router::get());
+    $url = "$controller/page";
+    if($module) {
+        $url = "$module/$url";
+    }
 }
 
 ?>
 
 <div class="paginator">
-    <?php
-				
-if ($page->prev == 1)
-					echo Html::link ( "$url/", 'Anterior', 'title="Ir a la pág. anterior" class="nextprev" rel="prev"' ); // se coloca el link sin número de página para la página 1
-				elseif ($page->prev)
-					echo Html::link ( "$url/$page->prev/", 'Anterior', 'title="Ir a la pág. anterior" class="nextprev" rel="prev"' )?>
+    <?php if($page->prev==1) echo Html::link("$url/", 'Anterior', 'title="Ir a la pág. anterior" class="nextprev" rel="prev"'); //se coloca el link sin número de página para la página 1
+        elseif($page->prev) echo Html::link("$url/$page->prev/", 'Anterior', 'title="Ir a la pág. anterior" class="nextprev" rel="prev"') ?>
 
-    pag. <?= $page->current ?>/<?= $page->total?>
+    pag. <?php echo $page->current ?>/<?php echo $page->total ?>
 
-    <?php if($page->next) echo Html::link("$url/$page->next/", 'Siguiente', 'title="Ir a la pág. siguiente" class="nextprev" rel="next"')?>
+    <?php if($page->next) echo Html::link("$url/$page->next/", 'Siguiente', 'title="Ir a la pág. siguiente" class="nextprev" rel="next"') ?>
 </div>

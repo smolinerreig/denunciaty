@@ -21,97 +21,75 @@
 /**
  * Clase principal para el manejo de excepciones
  *
- * @category Kumbia
- * @package Core
+ * @category   Kumbia
+ * @package    Core
  */
-class KumbiaException extends Exception {
-	
-	/**
-	 * View de error de la Excepción
-	 *
-	 * @var string
-	 */
-	protected $view;
-	
-	/**
-	 * Error 404 para los siguientes views
-	 *
-	 * @var array
-	 */
-	protected static $view404 = array (
-			'no_controller',
-			'no_action',
-			'num_params' 
-	);
-	
-	/**
-	 * Path del template de exception
-	 *
-	 * @var string
-	 */
-	protected $template = 'views/templates/exception.phtml';
-	
-	/**
-	 * Constructor de la clase;
-	 *
-	 * @param string $message
-	 *        	mensaje
-	 * @param string $view
-	 *        	vista que se mostrara
-	 */
-	public function __construct($message, $view = 'exception') {
-		$this->view = $view;
-		parent::__construct ( $message );
-	}
-	
-	/**
-	 * Maneja las excepciones no capturadas
-	 *
-	 * @param Exception $e        	
-	 *
-	 */
-	public static function handleException($e) {
-		self::setHeader ( $e );
-		// TODO quitar el extract, que el view pida los que necesite
-		extract ( Router::get (), EXTR_OVERWRITE );
-		// Registra la autocarga de helpers
-		spl_autoload_register ( 'kumbia_autoload_helper', true, true );
-		
-		$Controller = Util::camelcase ( $controller );
-		ob_start ();
-		if (PRODUCTION) { // TODO: añadir error 500.phtml
-			include APP_PATH . 'views/_shared/errors/404.phtml';
-			return;
-		}
-		if ($e instanceof KumbiaException) {
-			$view = $e->view;
-			$tpl = $e->template;
-		} else {
-			$view = 'exception';
-			$tpl = 'views/templates/exception.phtml';
-		}
-		// Fix problem with action name in REST
-		$action = $e->getMessage () ? $e->getMessage () : $action;
-		
-		include CORE_PATH . "views/errors/{$view}.phtml";
-		
-		$content = ob_get_clean ();
-		
-		// termina los buffers abiertos
-		while ( ob_get_level () ) {
-			ob_end_clean ();
-		}
-		include CORE_PATH . $tpl;
-	}
-	
-	/**
-	 * Añade la cabezera de error http
-	 */
-	private static function setHeader($e) {
-		if (isset ( $e->_view ) && in_array ( $e->_view, self::$view404 )) {
-			header ( 'HTTP/1.1 404 Not Found' );
-		} else {
-			header ( 'HTTP/1.1 500 Internal Server Error' );
-		} // TODO: mover a los views
-	}
+class KumbiaException extends Exception
+{
+
+    /**
+     * Codigo de error de la Excepcion
+     *
+     * @var string
+     */
+    protected $_view;
+
+    /**
+     * Constructor de la clase;
+     *
+     * @param string $message mensaje
+     * @param string $view vista que se mostrara
+     */
+    public function __construct($message, $view = 'exception')
+    {
+        $this->_view = $view;
+        parent::__construct($message);
+    }
+
+    /**
+     * Maneja las excepciones no capturadas
+     *
+     * @param Exception $e
+     * */
+    public static function handle_exception($e)
+    {
+        if (isset($e->_view) && ($e->_view == 'no_controller' || $e->_view == 'no_action')) {
+            header('HTTP/1.1 404 Not Found');
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+        }
+
+        extract(Router::get(), EXTR_OVERWRITE);
+
+        $Controller = Util::camelcase($controller);
+        ob_start();
+        if (PRODUCTION) {
+            include APP_PATH . 'views/_shared/errors/404.phtml';
+            return;
+        } else {
+            $Template = 'views/templates/exception.phtml';
+            if (isset($e->_view)) {
+                include CORE_PATH . "views/errors/{$e->_view}.phtml";
+            } else {
+                include CORE_PATH . "views/errors/exception.phtml";
+            }
+        }
+        $content = ob_get_clean();
+
+        // termina los buffers abiertos
+        while (ob_get_level ()) {
+            ob_end_clean();
+        }
+
+        // verifica si esta cargado el View
+        if (class_exists('View')) {
+            if (View::get('template') === NULL) {
+                echo $content;
+                exit;
+            }
+        }
+
+        include CORE_PATH . $Template;
+    }
+
 }

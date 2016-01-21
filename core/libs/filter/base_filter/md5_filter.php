@@ -22,24 +22,27 @@
 /**
  * Filtra una cadena cifrando con md5
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class Md5Filter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		if (isset ( $options ['binary'] ) && $options ['binary'] == 'true') {
-			return md5 ( ( string ) $s, true );
-		} else {
-			return md5 ( ( string ) $s );
-		}
-	}
+class Md5Filter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        if (isset($options['binary']) && $options['binary'] == 'true') {
+            return md5((string) $s, true);
+        } else {
+            return md5((string) $s);
+        }
+    }
+
 }

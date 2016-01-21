@@ -22,21 +22,24 @@
 /**
  * Filtra una cadena para eliminar espacios
  *
- * @category Kumbia
- * @package Filter
+ * @category   Kumbia
+ * @package    Filter
  * @subpackage BaseFilter
  */
-class StripspaceFilter implements FilterInterface {
-	
-	/**
-	 * Ejecuta el filtro
-	 *
-	 * @param string $s        	
-	 * @param array $options        	
-	 * @return string
-	 */
-	public static function execute($s, $options) {
-		$patron = '/[\s]/';
-		return preg_replace ( $patron, '', ( string ) $s );
-	}
+class StripspaceFilter implements FilterInterface
+{
+
+    /**
+     * Ejecuta el filtro
+     *
+     * @param string $s
+     * @param array $options
+     * @return string
+     */
+    public static function execute($s, $options)
+    {
+        $patron = '/[\s]/';
+        return preg_replace($patron, '', (string) $s);
+    }
+
 }
