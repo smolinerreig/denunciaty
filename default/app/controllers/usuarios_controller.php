@@ -19,13 +19,11 @@ class UsuariosController extends AppController {
 	 */
 	public function ver($id = null) {
 		
-		
-		// $this->data = $usuario->getUsuario ( $id );
+		$usuario=new Usuario();
+		$this->data = $usuario->getUsuario ( $id );
 		
 		if($_POST){
-			echo '<pre>';
-			print_r($_POST);
-			exit;
+			
 		}
 	}
 	/**

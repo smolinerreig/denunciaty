@@ -1,23 +1,63 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<?php echo Form::open('usuarios/ver')?>
-			<div>
+			<div class="row">
+			<div class="col-md-6">
 				<div class="form-group">
-					<label for="id">ID</label> <input name="tutia" type="email" class="form-control"
-						id="exampleInputEmail1" placeholder="Email">
+					<label>ID</label> <input name="id" type="email"
+						class="form-control" placeholder="<?php echo $data->id?>">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Password</label> <input
-						type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Password">
+					<label>Nombre</label> <input name="nombre" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->nombre?>">
 				</div>
-
-				<div class="checkbox">
-					<label> <input type="checkbox"> Check me out
-					</label>
+				<div class="form-group">
+					<label>Apellidos</label> <input name="apellidos" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->apellidos?>">
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<div class="form-group">
+					<label>Localidad</label> <input name="localidad" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->localidad?>">
+				</div>
+				<div class="form-group">
+					<label>Foto</label> <input name="foto" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->foto?>">
+				</div>
 			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Fecha de ingreso</label> <input name="ingreso_at"
+						type="email" class="form-control"
+						placeholder="<?php echo $data->ingreso_at?>">
+				</div>
+				<div class="form-group">
+
+					<label>Nombre de usuario</label> <input name="nombre_usuario"
+						type="email" class="form-control"
+						placeholder="<?php echo $data->nombre_usuario?>">
+				</div>
+				<div class="form-group">
+					<label>Email</label> <input name="email" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->email?>">
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label> <input name="password" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->password?>">
+				</div>
+				<div class="form-group">
+					<label>Administrador</label> <input name="admin" type="email"
+						class="form-control"
+						placeholder="<?php echo $data->admin?>">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</div>
 		<?php echo Form::close()?>
 	</div>
 </div>
