@@ -74,3 +74,27 @@ hr {
 .panel.panel-default {
 	border-radius: 4px 4px 0px 0px;
 }
+
+.danger {
+	color: #943767;
+}
+
+.danger:hover {
+	color: #210c17;
+}
+
+.link {
+	color: #224562;
+}
+
+.link:hover {
+	color: #0c1721;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #e6e6e6;
+}
+
+.table>tbody>tr>th {
+	background-color: #9fa4a6;
+}

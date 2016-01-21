@@ -11,6 +11,8 @@
 	rel='stylesheet' type='text/css'>
   <?php echo Tag::js('jquery/jquery.min')?>
   <?php echo Tag::js('bootstrap/bootstrap.min')?>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <?= Html::includeCss()?>
 </head>
 <body>
@@ -23,10 +25,8 @@
 					<div class="col-xs-12">
 						<hr>
 					</div>
-					<div class="col-xs-12 no-side-padding"><?php View::partial('header') ?></div>
-					<div class="col-xs-12">
-						&nbsp;
-					</div>
+					<div class="col-xs-12 no-side-padding"><?php if(!$_SESSION['KUMBIA_AUTH_VALID']['default']==1){ View::partial('header');} ?></div>
+					<div class="col-xs-12">&nbsp;</div>
 					<div class="col-md-10"><?php View::content(); ?></div>
 					<div class="col-md-2"><?php View::partial('reportes')?></div>
 					<div class="col-xs-12 footer"><?php View::partial('footer') ?></div>
@@ -34,9 +34,7 @@
 			</div>
 
 		</div>
-		<div class="row">
-			
-		</div>
+		<div class="row"></div>
 	</div>
 
 </body>
