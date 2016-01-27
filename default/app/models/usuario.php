@@ -21,8 +21,9 @@ class Usuario extends ActiveRecord {
 			return $us;
 		}
 	}
-	public function getTodos() {
-		return $this->find_all_by_sql ( 'SELECT * FROM usuario' );
+	public function getTodos($page, $per_page) {
+		$sql = 'SELECT * FROM usuario';
+		return $this->paginate_by_sql ('SELECT * FROM usuario',"per_page: $per_page", "page: $page");
 	}
 	public function createUsuario() {
 		$usuario = new Usuario ();

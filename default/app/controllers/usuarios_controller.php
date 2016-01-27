@@ -4,9 +4,13 @@ Load::models ( 'usuario', 'reporte' );
  * Controller por defecto si no se usa el routes
  */
 class UsuariosController extends AppController {
-	public function index() {
+	public function index($page=null) {
+		if($page==''){
+			$page=1;
+		}
+		$this->pagina=$page;
 		$usuario = new Usuario ();
-		$this->data = $usuario->getTodos ();
+		$this->data = $usuario->getTodos ($page, 10);
 	}
 	public function ver($id = null) {
 		$usuario = new Usuario ();

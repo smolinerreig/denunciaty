@@ -5,10 +5,10 @@
 				Usuarios <small></small>
 			</h1>
 		</div>
-		
+
 		<div class="col-xs-6">
-		<a class="btn btn-default btn-atras pull-right"
-					href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
 		<?php echo Html::link('usuarios/nuevo', 'Nuevo usuario','class="btn btn-default btn-adelante pull-right"')?></div>
 	</div>
 
@@ -24,7 +24,7 @@
 				<th>Apellidos</th>
 				<th>Email</th>
 			</tr>
-		<?php foreach($data as $usuario){ ?>
+		<?php foreach($data->items as $usuario){ ?>
 			<tr>
 				<td class="text-center">
 				<?php echo Html::link('usuarios/ver/'.$usuario->id, '<i class="material-icons" title="Ver datos de usuario">face</i>', 'class="link"')?>&nbsp;
@@ -41,7 +41,7 @@
 	</table>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<p>Paginador</p>
+			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'usuarios/index')); ?>
 			</div>
 		</div>
 	</div>

@@ -33,26 +33,24 @@ body {
 
 #menu-principal {
 	border-radius: 0px;
-	border-width: 0px 0px 1px 0px;
-	opacity: 0.9;
-	background: white;
-	box-shadow: 2px 2px 5px #2e3436;
-	-webkit-box-shadow: 2px 2px 5px #2e3436;
-	-moz-box-shadow: 2px 2px 5px #2e3436;
-	filter: shadow(color = #2e3436, direction = 135, strength = 2);
+	border-width: 0px 0px 2px 0px;
+	border-color: #152a3b;
+	background: #224562;
+	background: #224562;
 }
 
 #menu-principal * {
 	color: #224562;
+	color: white;
 }
 
 #cerrar-sesion {
-	color: #612245;
 	font-size: 1.2em;
 }
 
 #menu-principal input, #menu-principal button {
 	border-radius: 0px;
+	color: #224562;
 }
 
 .col-xs-12.no-side-margin.no-side-padding {
@@ -68,8 +66,11 @@ hr {
 }
 
 .footer {
+	height: 100px;
+	border-width: 2px 0px 0px 0px;
 	background-color: #224562;
 	color: white;
+	border-color: #152a3b;
 }
 
 .panel-default .panel-heading {
@@ -135,4 +136,10 @@ hr {
 .page-header {
 	margin-top: 0px;
 	font-family: 'Ubuntu', serif;
+}
+
+div.reportes {
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
 }
