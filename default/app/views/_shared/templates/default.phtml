@@ -4,15 +4,16 @@
 <meta charset=<?= APP_CHARSET ?>>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KumbiaPHP Framework</title>
-  <?php Tag::css('kumbia')?>
-  <?php Tag::css('bootstrap/bootstrap.min')?>
-  <?php Tag::css('style')?>
-  <link href='https://fonts.googleapis.com/css?family=Play'
+  <?php echo Tag::css('kumbia')?>
+  <?php echo Tag::css('bootstrap/bootstrap.min')?>
+  <?php echo Tag::css('style')?>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu|Roboto|Play'
 	rel='stylesheet' type='text/css'>
   <?php echo Tag::js('jquery/jquery.min')?>
   <?php echo Tag::js('bootstrap/bootstrap.min')?>
+    <?php echo Tag::js('scripts')?>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	rel="stylesheet">
   <?= Html::includeCss()?>
 </head>
 <body>
@@ -22,11 +23,7 @@
 			<div class="col-xs-12 no-side-margin no-side-padding"><?php View::partial('menu') ?></div>
 			<div class="col-xs-12">
 				<div class="row">
-					<div class="col-xs-12">
-						<hr>
-					</div>
 					<div class="col-xs-12 no-side-padding"><?php if(!Auth::is_valid()){ View::partial('header');} ?></div>
-					<div class="col-xs-12">&nbsp;</div>
 					<div class="col-md-10"><?php View::content(); ?></div>
 					<div class="col-md-2"><?php View::partial('reportes')?></div>
 					<div class="col-xs-12 footer"><?php View::partial('footer') ?></div>

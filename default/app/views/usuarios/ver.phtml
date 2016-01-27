@@ -1,62 +1,76 @@
+<div class="row page-header">
+  
+  <div class="col-xs-6">
+			<h1>Datos de usuario: <small><?php echo $data->nombre_usuario?> (<?php echo $data->id?>)</small></h1>
+		</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		</div>
+</div>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<?php echo Form::open('usuarios/ver')?>
 			<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<label>ID</label> <input name="id" type="email"
-						class="form-control" placeholder="<?php echo $data->id?>">
+					<label>ID</label> <input name="id" type="text"
+						class="form-control" value="<?php echo $data->id?>" disabled>
 				</div>
 				<div class="form-group">
-					<label>Nombre</label> <input name="nombre" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->nombre?>">
+					<label>Nombre</label> <input name="nombre" type="text"
+						class="form-control" value="<?php echo $data->nombre?>" disabled>
 				</div>
 				<div class="form-group">
-					<label>Apellidos</label> <input name="apellidos" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->apellidos?>">
+					<label>Apellidos</label> <input name="apellidos" type="text"
+						class="form-control" value="<?php echo $data->apellidos?>"
+						disabled>
 				</div>
 				<div class="form-group">
-					<label>Localidad</label> <input name="localidad" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->localidad?>">
+					<label>Localidad</label> <input name="localidad" type="text"
+						class="form-control" value="<?php echo $data->localidad?>"
+						disabled>
 				</div>
 				<div class="form-group">
-					<label>Foto</label> <input name="foto" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->foto?>">
+					<label>Foto</label> <input name="foto" type="text"
+						class="form-control" value="<?php echo $data->foto?>" disabled>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<label>Fecha de ingreso</label> <input name="ingreso_at"
-						type="email" class="form-control"
-						placeholder="<?php echo $data->ingreso_at?>">
+						type="text" class="form-control"
+						value="<?php echo $data->ingreso_at?>" disabled>
 				</div>
 				<div class="form-group">
 
 					<label>Nombre de usuario</label> <input name="nombre_usuario"
-						type="email" class="form-control"
-						placeholder="<?php echo $data->nombre_usuario?>">
+						type="text" class="form-control"
+						value="<?php echo $data->nombre_usuario?>" disabled>
 				</div>
 				<div class="form-group">
 					<label>Email</label> <input name="email" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->email?>">
+						class="form-control" value="<?php echo $data->email?>" disabled>
 				</div>
 				<div class="form-group">
-					<label>Contraseña</label> <input name="password" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->password?>">
+					<label>Contraseña</label> <input name="password" type="text"
+						class="form-control" value="<?php echo $data->password?>" disabled>
 				</div>
 				<div class="form-group">
-					<label>Administrador</label> <input name="admin" type="email"
-						class="form-control"
-						placeholder="<?php echo $data->admin?>">
+					<label>Administrador</label> <input name="admin" type="text"
+						class="form-control" value="<?php if($data->admin==1){
+							echo 'Si';
+						}else{
+							echo 'No';
+						} ?>" disabled>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
+			<div class="col-md-12 text-center">
+				
+			<?php echo Html::link('usuarios/editar/'.$data->id, 'Editar datos', 'class="btn btn-default btn-adelante"')?>
+			<?php echo Html::link('usuarios/eliminar/'.$data->id, 'Eliminar usuario', 'class="btn btn-default btn-adelante"')?>
+			</div>
+
 		</div>
 		<?php echo Form::close()?>
 	</div>

@@ -1,3 +1,12 @@
+.valign-wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
 .no-side-padding {
 	padding-right: 0px;
 	padding-left: 0px;
@@ -8,12 +17,14 @@
 	margin-left: 0px;
 }
 
-body {
-	
+.btn.btn-default {
+	border-radius: 0px;
 }
 
-#navbar-collapse>form {
-	padding: 0px 0px;
+body {
+	font-family: 'Ubuntu', serif;
+	padding-top: 40px;
+	color: #224562;
 }
 
 #menu-principal, .panel-default .panel-heading .panel-title {
@@ -23,9 +34,6 @@ body {
 #menu-principal {
 	border-radius: 0px;
 	border-width: 0px 0px 1px 0px;
-	position: fixed;
-	width: 100%;
-	z-index: 2;
 	opacity: 0.9;
 	background: white;
 	box-shadow: 2px 2px 5px #2e3436;
@@ -40,7 +48,6 @@ body {
 
 #cerrar-sesion {
 	color: #612245;
-	padding-right: 0px;
 	font-size: 1.2em;
 }
 
@@ -76,7 +83,7 @@ hr {
 }
 
 .danger {
-	color: #943767;
+	color: #612245;
 }
 
 .danger:hover {
@@ -97,4 +104,35 @@ hr {
 
 .table>tbody>tr>th {
 	background-color: #9fa4a6;
+}
+
+.btn-atras {
+	border-radius: 1px;
+	background-color: #612245;
+	border-color: #0c1721;
+	color: white;
+	margin-top: 20px;
+}
+
+.btn-atras:hover {
+	background-color: #3b152a;
+	color: white;
+}
+
+.btn-adelante {
+	border-radius: 1px;
+	background-color: #32471a;
+	border-color: #0c1721;
+	color: white;
+	margin-top: 20px;
+}
+
+.btn-adelante:hover {
+	background-color: #202e11;
+	color: white;
+}
+
+.page-header {
+	margin-top: 0px;
+	font-family: 'Ubuntu', serif;
 }

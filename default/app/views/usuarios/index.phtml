@@ -1,8 +1,23 @@
-<div class="row">
+<div class="page-header">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1>
+				Usuarios <small></small>
+			</h1>
+		</div>
+		
+		<div class="col-xs-6">
+		<a class="btn btn-default btn-atras pull-right"
+					href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		<?php echo Html::link('usuarios/nuevo', 'Nuevo usuario','class="btn btn-default btn-adelante pull-right"')?></div>
+	</div>
+
+</div>
+<div id="ver-usuarios" class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<table class="table table-responsive">
 			<tr>
-				<th ></th>
+				<th></th>
 				<th>ID</th>
 				<th>Usuario</th>
 				<th>Nombre</th>
@@ -14,7 +29,7 @@
 				<td class="text-center">
 				<?php echo Html::link('usuarios/ver/'.$usuario->id, '<i class="material-icons" title="Ver datos de usuario">face</i>', 'class="link"')?>&nbsp;
 				<?php echo Html::link('usuarios/editar/'.$usuario->id, '<i class="material-icons" title="Editar datos de usuario" >build</i>', 'class="link"')?>&nbsp;
-				<?php echo Html::link('usuarios/borrar/'.$usuario->id, '<i class="material-icons" title="Eliminar usuario" >highlight_off</i>', 'class="danger"')?>
+				<?php echo Html::link('usuarios/eliminar/'.$usuario->id, '<i class="material-icons" title="Eliminar usuario" >highlight_off</i>', 'class="danger"')?>
 				</td>
 				<td><?php echo $usuario->id?></td>
 				<td><?php echo $usuario->nombre_usuario?></td>
@@ -24,5 +39,10 @@
 			</tr>
 	<?php }?>
 	</table>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<p>Paginador</p>
+			</div>
+		</div>
 	</div>
 </div>

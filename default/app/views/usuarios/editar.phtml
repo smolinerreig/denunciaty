@@ -1,0 +1,92 @@
+<div class="page-header">
+	<div class="row">
+
+		<div class="col-xs-6">
+			<h1>
+				Editar datos: <small><?php echo $data->nombre_usuario?> (<?php echo $data->id?>)</small>
+			</h1>
+		</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<?php echo Form::open('usuarios/editar/'.$data->id)?>
+			<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>ID</label> <input name="id" type="text" class="form-control"
+						placeholder="<?php echo $data->id?>" disabled>
+				</div>
+				<div class="form-group">
+					<label>Nombre</label> <input name="nombre" type="text"
+						class="form-control" placeholder="<?php echo $data->nombre?>">
+				</div>
+				<div class="form-group">
+					<label>Apellidos</label> <input name="apellidos" type="text"
+						class="form-control" placeholder="<?php echo $data->apellidos?>">
+				</div>
+				<div class="form-group">
+					<label>Localidad</label> <input name="localidad" type="text"
+						class="form-control" placeholder="<?php echo $data->localidad?>">
+				</div>
+				<div class="form-group">
+					<label>Foto</label> <input name="foto" type="text"
+						class="form-control" placeholder="<?php echo $data->foto?>">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Fecha de ingreso</label> <input name="ingreso_at"
+						type="text" class="form-control"
+						placeholder="<?php echo $data->ingreso_at?>" disabled>
+				</div>
+				<div class="form-group">
+
+					<label>Nombre de usuario</label> <input name="nombre_usuario"
+						type="text" class="form-control"
+						placeholder="<?php echo $data->nombre_usuario?>">
+				</div>
+				<div class="form-group">
+					<label>Email</label> <input name="email" type="email"
+						class="form-control" placeholder="<?php echo $data->email?>">
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label>
+					<div class="form-inline">
+						<input name="password" id="password" type="text"
+							class="form-control" placeholder="<?php echo $data->password?>"
+							style="width: 66%">
+						<button type="button" class="btn btn-default btn-sm" id="random_pass" style="width: 33%">Contraseña
+							aleatoria</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Administrador</label> <select class="form-control"
+						name="admin">
+						<option value=1 <?php if($data->admin==1){echo 'selected';}?>>Si</option>
+						<option value=0 <?php if($data->admin==0){echo 'selected';}?>>No</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				<button type="submit" class=" btn btn-default btn-lg btn-adelante">Guardar
+					datos</button>
+			</div>
+		</div>
+		<?php echo Form::close()?>
+	</div>
+</div>
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $('#random_pass').click(function(){
+        $('#password').val(random_password(23));
+        });
+});
+</script>

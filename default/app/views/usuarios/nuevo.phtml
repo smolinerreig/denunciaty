@@ -1,0 +1,89 @@
+<div class="row page-header">
+
+	<div class="col-xs-6">
+		<h1>
+			Nuevo usuario <small></small>
+		</h1>
+	</div>
+	<div class="col-xs-6">
+		<a class="btn btn-default btn-atras pull-right"
+			href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<?php echo Form::open('usuarios/nuevo')?>
+			<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>ID</label> <input name="id" type="text" class="form-control"
+						disabled>
+				</div>
+				<div class="form-group">
+					<label>Nombre</label> <input name="nombre" type="text"
+						class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Apellidos</label> <input name="apellidos" type="text"
+						class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Localidad</label> <input name="localidad" type="text"
+						class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Foto</label> <input name="foto" type="text"
+						class="form-control">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Fecha de ingreso</label> <input name="ingreso_at"
+						type="text" class="form-control"
+						value="<?php echo getdate()['mday'].'-'.getdate()['mon'].'-'.getdate()['year']?>"
+						disabled>
+				</div>
+				<div class="form-group">
+
+					<label>Nombre de usuario</label> <input name="nombre_usuario"
+						type="text" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Email</label> <input name="email" type="email"
+						class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label>
+					<div class="form-inline">
+						<input name="password" id="password" type="text"
+							class="form-control" style="width: 66%">
+						<button type="button" class="btn btn-default btn-sm"
+							id="random_pass" style="width: 33%">Contraseña aleatoria</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Administrador</label> <select class="form-control"
+						name="admin">
+						<option value=1>Si</option>
+						<option value=0 selected>No</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				<button type="submit" class="btn btn-default btn-adelante btn-lg">Crear usuario</button>
+			</div>
+
+		</div>
+		<?php echo Form::close()?>
+	</div>
+</div>
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $('#random_pass').click(function(){
+        $('#password').val(random_password(23));
+        });
+});
+</script>
