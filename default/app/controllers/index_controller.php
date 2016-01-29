@@ -12,10 +12,11 @@ class IndexController extends AppController {
 		
 		if (Input::hasPost ( 'usuario' ) && Input::hasPost ( 'password' )) {
 			$us = new Usuario ();
-			if($log=$us->login ($_POST)){
+			$log=$us->login ($_POST);
+			if($log){
 				Flash::valid('Bienvenido a la administración de Denúnciaty.');
 			}else{
-				Flash::error('Sus datos no son correctos. Intentelo de nuevo.');
+				Flash::error('Sus datos no constan en el registro de administradores');
 			}
 		} else {
 			Flash::error('Introduzca usuario y contraseña válidos para hacer login.');

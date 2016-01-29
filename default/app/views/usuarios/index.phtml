@@ -30,6 +30,7 @@
 				<?php echo Html::link('usuarios/ver/'.$usuario->id, '<i class="material-icons" title="Ver datos de usuario">face</i>', 'class="link"')?>&nbsp;
 				<?php echo Html::link('usuarios/editar/'.$usuario->id, '<i class="material-icons" title="Editar datos de usuario" >build</i>', 'class="link"')?>&nbsp;
 				<?php echo Html::link('usuarios/eliminar/'.$usuario->id, '<i class="material-icons" title="Eliminar usuario" >highlight_off</i>', 'class="danger"')?>
+				<?php echo Html::link('usuarios/banear/'.$usuario->id, '<i class="material-icons" title="Banear usuario (30 días)">lock</i>', 'class="danger"')?>&nbsp;
 				</td>
 				<td><?php echo $usuario->id?></td>
 				<td><?php echo $usuario->nombre_usuario?></td>

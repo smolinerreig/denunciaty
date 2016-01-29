@@ -3,12 +3,16 @@ class Usuario extends ActiveRecord {
 	public function login($post) {
 		$usuario = $post ['usuario'];
 		$password = sha1 ( $post ['password'] );
-		
 		$auth = new Auth ( "model", "class: Usuario", "nombre_usuario: {$usuario}", "password: {$password}" );
-		if ($auth->authenticate ()) {
-			return true;
-		} else {
-			return false;
+		$admin = $this->find_by_sql ( 'SELECT * FROM usuario WHERE nombre_usuario="' . $usuario . '"' );
+		if ($admin->admin == 1) {
+			if ($auth->authenticate ()) {
+				if (Auth::get ( 'admin' ) == 1) {
+					return true;
+				}
+			} else {
+				return false;
+			}
 		}
 	}
 	public function logout() {
@@ -23,7 +27,7 @@ class Usuario extends ActiveRecord {
 	}
 	public function getTodos($page, $per_page) {
 		$sql = 'SELECT * FROM usuario';
-		return $this->paginate_by_sql ('SELECT * FROM usuario',"per_page: $per_page", "page: $page");
+		return $this->paginate_by_sql ( 'SELECT * FROM usuario', "per_page: $per_page", "page: $page" );
 	}
 	public function createUsuario() {
 		$usuario = new Usuario ();
@@ -90,6 +94,37 @@ class Usuario extends ActiveRecord {
 			$delRep = $repo->deleteUsuarioReportes ( $id );
 			return $usuario->delete ( $id );
 		} else {
+			return false;
+		}
+	}
+	public function banear($id) {
+		$usuario = $this->find ( $id );
+		$fecha = date ( 'Y-m-j' );
+		$nuevafecha = strtotime ( '+30 day', strtotime ( $fecha ) );
+		$nuevafecha = date ( 'Y-m-j', $nuevafecha );
+		
+		$usuario->dac = $nuevafecha;
+		$usuario->update ();
+		return $nuevafecha;
+	}
+	public function getdac($id) {
+		$usuario = $this->find ( $id );
+		if ($usuario->dac == null) {
+			return false;
+		} else {
+			return $usuario->dac;
+		}
+	}
+	public function operatedac($id, $dac) {
+		$usuario=$this->find($id);
+		$datedac=explode('-', date('Y-m-j',$dac));
+		$date=explode('-',date('Y-m-j'));
+		$fechadac=gregoriantojd(intval($datedac[1]), intval($datedac[2]), intval($datedac[0]));
+		$fecha=gregoriantojd(intval($date[1]), intval($date[2]), intval($date[0]));
+		if($fechadac-$fecha<=0){
+			$usuario->dac='';
+			return $usuario->update();
+		}else{
 			return false;
 		}
 	}

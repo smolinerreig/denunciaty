@@ -4,13 +4,13 @@ Load::models ( 'usuario', 'reporte' );
  * Controller por defecto si no se usa el routes
  */
 class UsuariosController extends AppController {
-	public function index($page=null) {
-		if($page==''){
-			$page=1;
+	public function index($page = null) {
+		if ($page == '') {
+			$page = 1;
 		}
-		$this->pagina=$page;
+		$this->pagina = $page;
 		$usuario = new Usuario ();
-		$this->data = $usuario->getTodos ($page, 10);
+		$this->data = $usuario->getTodos ( $page, 10 );
 	}
 	public function ver($id = null) {
 		$usuario = new Usuario ();
@@ -56,6 +56,22 @@ class UsuariosController extends AppController {
 		} else {
 			Flash::error ( 'No se ha podido eliminar el usuario. Reintentelo de nuevo.' );
 			Redirect::to ( 'usuarios/index' );
+		}
+	}
+	public function banear($id, $tiempo = null) {
+		View::select ( null );
+		$usuario = new Usuario ();
+		$ban = $usuario->banear ( $id );
+		Flash::error ( 'Usuario baneado hasta el ' . $ban );
+		Redirect::to ( 'index' );
+	}
+	public function checkdac($id) {
+		View::select ( null );
+		$usuario = new Usuario ();
+		$dac = $usuario->getdac ( $id );
+		if ($dac != false) {
+			
+		} else {
 		}
 	}
 }
