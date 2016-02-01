@@ -17,25 +17,30 @@ class Usuario extends ActiveRecord {
 		return $this->find_all_by_sql ( 'SELECT * FROM usuario' );
 	}
 	public function createUsuario($nombre, $apellidos, $nombre_usuario, $email, $password, $foto = null, $admin, $localidad) {
-		$usuario = new Usuario ();
-		$usuario->nombre = $nombre;
-		$usuario->apellidos = $apellidos;
-		$usuario->nombre_usuario = $nombre_usuario;
-		$usuario->email = $email;
-		$usuario->password = sha1 ( $password );
-		$usuario->localidad = $localidad;
-		if ($foto != null && $foto != '') {
-			$usuario->foto = $foto;
-		} else {
-			$usuario->foto = '0';
+		if($this->checkUsuario($nombre_usuario, $email)==0){
+			$usuario = new Usuario ();
+			$usuario->nombre = $nombre;
+			$usuario->apellidos = $apellidos;
+			$usuario->nombre_usuario = $nombre_usuario;
+			$usuario->email = $email;
+			$usuario->password = sha1 ( $password );
+			$usuario->localidad = $localidad;
+			if ($foto != null && $foto != '') {
+				$usuario->foto = $foto;
+			} else {
+				$usuario->foto = '0';
+			}
+			$usuario->admin = $admin;
+			$us = $usuario->create ();
+			if ($us == true) {
+				return $us;
+			} else {
+				return '0';
+			}
+		}else{
+			return '00';
 		}
-		$usuario->admin = $admin;
-		$us = $usuario->create ();
-		if ($us == true) {
-			return $us;
-		} else {
-			return '0';
-		}
+		
 	}
 	public function editUsuario($id, $campos = null) {
 		$usuario = $this->find ( $id );
@@ -91,6 +96,26 @@ class Usuario extends ActiveRecord {
 		} else {
 			return '0';
 		}
+	}
+	public function checkUsuario($nombre_usuario, $email){
+		$us1=$this->exists('email="'.$email.'"');
+		$us2=$this->exists('nombre_usuario="'.$nombre_usuario.'"');
+		$error=[];
+		$cont=0;
+		if($us1!=0){
+			$error[]='email';
+			$cont++;
+		}
+		if($us2!=0){
+			$error[]='nombre_usuario';
+			$cont++;			
+		}
+		if($cont==0){
+			return 0;
+		}else{
+			return $error;
+		}
+		
 	}
 }
 ?>

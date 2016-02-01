@@ -24,8 +24,10 @@ class UsuarioController extends AppController {
 	/**
 	 * Devuelve los datos del usuario
 	 * Si no se pasa el parámetro $id devuelve todos los usuarios;
+	 * Ejemplo: http://denunciaty/api/usuario/datos/3 
 	 * 
-	 * Ejemplo: http://denunciaty/api/usuario/datos/3
+	 * Para buscar por email se pasará el número 0 en el campo id y el email en el campo email.
+	 * Ejemplo: http://denunciaty/api/usuario/datos/0/denunciaty.florida@gmail.es
 	 *
 	 * @param int $id        	
 	 */
