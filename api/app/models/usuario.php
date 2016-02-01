@@ -7,6 +7,12 @@ class Usuario extends ActiveRecord {
 			return $us;
 		}
 	}
+	public function getUsuarioByEmail($email){
+		$us = $this->find_by_sql ( 'SELECT * FROM usuario WHERE email = "' . $email . '"' );
+		if (count ( $us ) > 0) {
+			return $us;
+		}
+	}
 	public function getTodos() {
 		return $this->find_all_by_sql ( 'SELECT * FROM usuario' );
 	}

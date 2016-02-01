@@ -29,12 +29,13 @@ class UsuarioController extends AppController {
 	 *
 	 * @param int $id        	
 	 */
-	public function datos($id = null) {
+	public function datos($id = null, $email=null) {
 		$usuario = new Usuario ();
-		if ($id == 0 || $id == null) {
-			$this->data = $usuario->getTodos ();
-		} else {
+		if ($id != 0 || $id != null) {
 			$this->data = $usuario->getUsuario ( $id );
+		}
+		if($email!='' && $email!=null){
+			$this->data = $usuario->getUsuarioByEmail ($email);
 		}
 	}
 	/**
