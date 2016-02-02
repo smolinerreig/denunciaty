@@ -62,8 +62,17 @@
 						<input name="password" id="password" type="text"
 							class="form-control" placeholder="<?php echo $data->password?>"
 							style="width: 66%">
-						<button type="button" class="btn btn-default btn-sm" id="random_pass" style="width: 33%">Contraseña
-							aleatoria</button>
+						<button type="button" class="btn btn-default btn-sm"
+							id="random_pass" style="width: 33%">Contraseña aleatoria</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label title="Denúnciaty Anti Cheat">D.A.C</label>
+					<div class="form-inline">
+						<input name="dac" type="text" class="form-control"
+							style="width: 66%;" value="<?php echo $data->dac?>" disabled>
+						<a type="button" class="btn btn-default btn-sm"
+							id="random_pass" style="width: 33%">Despenalizar</a>
 					</div>
 				</div>
 				<div class="form-group">
@@ -87,6 +96,6 @@ $( document ).ready(function() {
     console.log( "ready!" );
     $('#random_pass').click(function(){
         $('#password').val(random_password(23));
-        });
+        })
 });
 </script>

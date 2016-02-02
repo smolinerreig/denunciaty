@@ -38,5 +38,10 @@ class Reporte extends ActiveRecord {
 		}
 		return true;
 	}
+	
+	public function getReporteByTipo($tipo_id){
+		$repo= $this->find_all_by_sql('SELECT * FROM reporte WHERE tipo_id='.$tipo_id);
+		return $repo;
+	}
 }
 ?>

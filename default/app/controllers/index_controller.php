@@ -7,6 +7,7 @@ Load::model('usuario');
 class IndexController extends AppController {
 	public function index() {
 	}
+	
 	public function login() {
 		View::select ( 'null' );
 		
