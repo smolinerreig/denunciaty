@@ -56,14 +56,23 @@ class ReporteController extends AppController {
 	 * @param int $tipo_id        	
 	 * @param int $usuario_id        	
 	 */
-	public function nuevo($titulo, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id, $foto) {
+	public function nuevo($titulo, $descripcion, $gravedad_id, $ubicacion, $longitud=null, $latitud=null, $tipo_id, $usuario_id, $foto) {
 		$repo = new Reporte ();
-		
-		$crear = $repo->createReporte ( $titulo, str_replace ( '+', '/', $foto ), $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id );
+		if($longitud=='x'){
+            $longitud=Reporte::getRandomCoordinates()[0];
+        }
+        if($latitud=='y'){
+            $latitud=Reporte::getRandomCoordinates()[1];
+        }
+		$crear = $repo->createReporte ( $titulo, str_replace ( '+', '/', $foto ), $descripcion, $gravedad_id, $ubicacion,$longitud, $latitud, $tipo_id, $usuario_id );
 		if ($crear == false) {
 			$this->data = '0';
 		} else {
 			$this->data = $crear;
 		}
-	}
+	}    
+    
+    public function coord(){
+        $this->data=Reporte::getRandomCoordinates()[0];
+    }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php 
 class Reporte extends ActiveRecord {
 	function getReporte($id) {
 		$repo = $this->find_by_sql ( 'SELECT * FROM reporte WHERE id = ' . $id . ';' );
@@ -7,9 +7,9 @@ class Reporte extends ActiveRecord {
 		}
 	}
 	public function getTodos() {
-		return $this->find_all_by_sql ( 'SELECT * FROM reporte;' );
+		return $this->find_all_by_sql ( 'SELECT * FROM reporte' );
 	}
-	public function createReporte($titulo, $foto = null, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id) {
+	public function createReporte($titulo, $foto = null, $descripcion, $gravedad_id, $ubicacion, $longitud=null, $latitud=null, $tipo_id, $usuario_id) {
 		$repo = new Reporte ();
 		$repo->titulo = $titulo;
 		if ($foto != '0') {
@@ -18,11 +18,14 @@ class Reporte extends ActiveRecord {
 		$repo->descripcion = $descripcion;
 		$repo->gravedad_id = $gravedad_id;
 		$repo->ubicacion = $ubicacion;
+        $repo->longitud=$longitud;
+        $repo->latitud=$latitud;
 		$repo->tipo_id = $tipo_id;
 		$repo->usuario_id = $usuario_id;
 		$repo->solucionado = 0;
-		if ($repo->create () == true) {
-			return $repo->create ();
+        $rep=$repo->create ();
+		if ($rep == true) {
+			return true;
 		} else {
 			return '0';
 		}
@@ -43,5 +46,13 @@ class Reporte extends ActiveRecord {
 		$repo= $this->find_all_by_sql('SELECT * FROM reporte WHERE tipo_id='.$tipo_id);
 		return $repo;
 	}
+    
+    public static function getRandomCoordinates(){
+        $long=rand(-18000000,18000000)/100000;
+        $lat=rand(-9000000,9000000)/100000;
+        $coord[]=$long;
+        $coord[]=$lat;
+        return $coord;
+    }
 }
 ?>
