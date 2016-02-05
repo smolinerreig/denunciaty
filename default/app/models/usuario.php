@@ -1,4 +1,5 @@
 <?php
+Load::model('reporte');
 class Usuario extends ActiveRecord {
 	public function login($post) {
 		$usuario = $post ['usuario'];
@@ -128,4 +129,8 @@ class Usuario extends ActiveRecord {
 			return false;
 		}
 	}
+     
+    public function getReportes($id, $page){
+        return $this->paginate_by_sql ( 'SELECT * FROM reporte WHERE usuario_id='.$id, "per_page: 10", "page: $page" );
+    }
 }

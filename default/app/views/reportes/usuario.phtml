@@ -1,0 +1,51 @@
+<div class="page-header">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1>
+				Reportes por usuario: <?php echo $data->items[0]->usuario_id?> <small></small>
+			</h1>
+		</div>
+
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		<?php echo Html::link('', 'Añadir reporte','class="btn btn-default btn-adelante pull-right"')?></div>
+	</div>
+
+</div>
+<div id="ver-usuarios" class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<table class="table table-responsive">
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Gravedad</th>
+				<th>Ubicacion</th>
+                <th>Solucionado</th>
+			</tr>
+		<?php foreach($data->items as $rep){ ?>
+			<tr>
+				<td class="text-center">
+				<?php echo Html::link('', '<i class="material-icons" title="Ver datos de usuario">face</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('', '<i class="material-icons" title="Editar datos de usuario" >build</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('', '<i class="material-icons" title="Eliminar usuario" >highlight_off</i>', 'class="danger"')?>
+				<?php echo Html::link('', '<i class="material-icons" title="Banear usuario (30 días)">lock</i>', 'class="danger"')?>&nbsp;
+				</td>
+				<td><?php echo $rep->id?></td>
+				<td><?php echo $rep->titulo?></td>
+				<td><?php echo $rep->descripcion?></td>
+				<td><?php echo $rep->gravedad_id?></td>
+				<td><?php echo $rep->ubicacion?></td>
+                <td><?php echo $rep->solucionado?></td>
+			</tr>
+	<?php }?>
+	</table>
+		<div class="row">
+			<div class="col-md-12 text-center">
+			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'usuarios/index')); ?>
+			</div>
+		</div>
+	</div>
+</div>
