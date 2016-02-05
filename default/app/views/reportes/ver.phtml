@@ -1,0 +1,85 @@
+<div class="row page-header">
+  <div class="col-xs-6">
+			<h1>Datos de reporte: <small><?php echo $data->titulo?> (<?php echo $data->id?>)</small></h1>
+		</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<?php echo Form::open('usuarios/ver')?>
+			<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>ID</label> <input name="id" type="text"
+						class="form-control" value="<?php echo $data->id?>" disabled>
+				</div>
+				<div class="form-group">
+					<label>Título</label> <input name="titulo" type="text"
+						class="form-control" value="<?php echo $data->titulo?>" disabled>
+				</div>
+				<div class="form-group">
+					<label>Foto</label> <input name="foto" type="text"
+						class="form-control" value="<?php echo $data->foto?>"
+						disabled>
+				</div>
+				<div class="form-group">
+					<label>Descripción</label> <input name="descripcion" type="text"
+						class="form-control" value="<?php echo $data->descripcion?>"
+						disabled>
+				</div>
+				<div class="form-group">
+					<label title="">Inicio</label> <input name="inicio" type="text"
+						class="form-control" value="<?php echo $data->inicio_at?>" disabled>
+				</div>
+                <div class="form-group">
+					<label title="">Longitud</label> <input name="longitud" type="text"
+						class="form-control" value="<?php echo $data->longitud?>" disabled>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Ubicación</label> <input name="ubicacion"
+						type="text" class="form-control"
+						value="<?php echo $data->ubicacion?>" disabled>
+				</div>
+				<div class="form-group">
+
+					<label>Tipo</label> <input name="tipo"
+						type="text" class="form-control"
+						value="<?php echo $data->tipo_id?>" disabled>
+				</div>
+				
+				<div class="form-group">
+					<label>usuario</label> <input name="usuario" type="text"
+						class="form-control" value="<?php echo $usuario->nombre_usuario?> <?php echo $usuario->id?>" disabled>
+				</div>
+				<div class="form-group">
+					<label>Solucionado</label> <input name="solucionado" type="text"
+						class="form-control" value="<?php if($data->solucionado==1){
+							echo 'Si';
+						}else{
+							echo 'No';
+						} ?>" disabled>
+				</div>
+                <div class="form-group">
+					<label title="">Caducidad</label> <input name="caducidad" type="text"
+						class="form-control" value="<?php echo $data->caducidad_at?>" disabled>
+				</div>
+                <div class="form-group">
+					<label >Latitud</label> <input name="latitud" type="text"
+						class="form-control" value="<?php echo $data->latitud?>" disabled>
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				
+			<?php echo Html::link('reportes/editar/'.$data->id, 'Editar datos', 'class="btn btn-default btn-adelante"')?>
+			<?php echo Html::link('reportes/eliminar/'.$data->id, 'Eliminar reporte', 'class="btn btn-default btn-adelante"')?>
+			</div>
+
+		</div>
+		<?php echo Form::close()?>
+	</div>
+</div>

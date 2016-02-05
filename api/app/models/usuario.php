@@ -78,7 +78,7 @@ class Usuario extends ActiveRecord {
 		$repo = new Reporte ();
 		$usuario = $this->find ( $id );
 		if ($usuario == true) {
-			$delRep = $repo->deleteUsuarioReportes ( $id );
+			//$delRep = $repo->deleteUsuarioReportes ( $id );
 			return $usuario->delete ( $id );
 		} else {
 			return '0';

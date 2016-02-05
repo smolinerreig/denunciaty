@@ -1,0 +1,85 @@
+<div class="row page-header">
+  <div class="col-xs-6">
+                                  
+			<h1>Editar reporte: <small><?php echo $data->titulo?> (<?php echo $data->id?>)</small></h1>
+		</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<?php echo Form::open('usuarios/ver')?>
+			<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>ID</label> <input name="id" type="text"
+						class="form-control" value="<?php echo $data->id?>" disabled>
+				</div>
+				<div class="form-group">
+					<label>Título</label> <input name="titulo" type="text"
+						class="form-control" value="<?php echo $data->titulo?>">
+				</div>
+				<div class="form-group">
+					<label>Foto</label> <input name="foto" type="text"
+						class="form-control" value="<?php echo $data->foto?>">
+				</div>
+				<div class="form-group">
+					<label>Descripción</label> <input name="descripcion" type="text"
+						class="form-control" value="<?php echo $data->descripcion?>">
+				</div>
+				<div class="form-group">
+					<label title="">Inicio</label> <input name="inicio" type="text"
+						class="form-control" value="<?php echo $data->inicio_at?>" disabled>
+				</div>
+                <div class="form-group">
+					<label title="">Longitud</label> <input name="longitud" type="text"
+						class="form-control" value="<?php echo $data->longitud?>">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Ubicación</label> <input name="ubicacion"
+						type="text" class="form-control"
+						value="<?php echo $data->ubicacion?>">
+				</div>
+				<div class="form-group">
+					<label>Tipo</label> 
+                        <select name="tipo" class="form-control">
+                            <?php foreach($tipos as $t){ ?>
+                                <option value="<?php echo $t->id ?>" 
+                                    <?php if($t->id==$data->tipo_id){echo 'selected';}?>>
+                                        <?php echo $t->nombre?>
+                                </option>
+                            <?php } ?>
+                        </select>
+				</div>
+				<div class="form-group">
+					<label>usuario</label> <input name="usuario" type="text"
+						class="form-control" value="<?php echo $usuario->nombre_usuario?> (<?php echo $usuario->id?>)" disabled>
+				</div>
+				<div class="form-group">
+					<label>Solucionado</label> 
+                        <select class="form-control" name="solucionado">
+						<option value=1 <?php if($data->admin==1){echo 'selected';}?>>Si</option>
+						<option value=0 <?php if($data->admin==0){echo 'selected';}?>>No</option>
+					</select>
+				</div>
+                <div class="form-group">
+					<label title="">Caducidad</label> <input name="caducidad" type="text"
+						class="form-control" value="<?php echo $data->caducidad_at?>" disabled>
+				</div>
+                <div class="form-group">
+					<label >Latitud</label> <input name="latitud" type="text"
+						class="form-control" value="<?php echo $data->latitud?>">
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				<button type="submit" class="btn btn-default btn-adelante">Guardar Datos</button>
+			</div>
+
+		</div>
+		<?php echo Form::close()?>
+	</div>
+</div>
