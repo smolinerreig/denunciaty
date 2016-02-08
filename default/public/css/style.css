@@ -40,8 +40,12 @@ body {
 }
 
 #menu-principal * {
-	color: #224562;
 	color: white;
+	background-color: #224562;
+}
+
+#menu-principal .divider{
+	background-color: #152a3b;
 }
 
 #cerrar-sesion {
@@ -51,6 +55,7 @@ body {
 #menu-principal input, #menu-principal button {
 	border-radius: 0px;
 	color: #224562;
+	background-color:#fff;
 }
 
 .col-xs-12.no-side-margin.no-side-padding {

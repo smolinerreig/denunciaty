@@ -1,51 +1,65 @@
+<?php $tipo=new Tipo();?>
+<?php if(count($data->items)>0){ ?>
 <div class="page-header">
 	<div class="row">
 		<div class="col-xs-6">
 			<h1>
-				Reportes por usuario: <?php echo $data->items[0]->usuario_id?> <small></small>
+				Reportes por usuario: <small><?php echo $data->items[0]->usuario_id?></small>
 			</h1>
 		</div>
 
 		<div class="col-xs-6">
 			<a class="btn btn-default btn-atras pull-right"
 				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
-		<?php echo Html::link('', 'Añadir reporte','class="btn btn-default btn-adelante pull-right"')?></div>
+		</div>
 	</div>
-
 </div>
+
 <div id="ver-usuarios" class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<table class="table table-responsive">
 			<tr>
 				<th></th>
 				<th>ID</th>
-				<th>Nombre</th>
+				<th>Titulo</th>
 				<th>Descripción</th>
-				<th>Gravedad</th>
-				<th>Ubicacion</th>
-                <th>Solucionado</th>
+				<th>Tipo</th>
+				<th>Solucionado</th>
 			</tr>
-		<?php foreach($data->items as $rep){ ?>
+		<?php foreach($data->items as $r){ ?>
 			<tr>
 				<td class="text-center">
-				<?php echo Html::link('', '<i class="material-icons" title="Ver datos de usuario">face</i>', 'class="link"')?>&nbsp;
-				<?php echo Html::link('', '<i class="material-icons" title="Editar datos de usuario" >build</i>', 'class="link"')?>&nbsp;
-				<?php echo Html::link('', '<i class="material-icons" title="Eliminar usuario" >highlight_off</i>', 'class="danger"')?>
-				<?php echo Html::link('', '<i class="material-icons" title="Banear usuario (30 días)">lock</i>', 'class="danger"')?>&nbsp;
+				<?php echo Html::link('reportes/ver/'.$r->id, '<i class="material-icons" title="Ver datos del reporte">face</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('reportes/editar/'.$r->id, '<i class="material-icons" title="Editar datos del reporte" >build</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('reportes/eliminar/'.$r->id, '<i class="material-icons" title="Eliminar reporte" >highlight_off</i>', 'class="danger"')?>
 				</td>
-				<td><?php echo $rep->id?></td>
-				<td><?php echo $rep->titulo?></td>
-				<td><?php echo $rep->descripcion?></td>
-				<td><?php echo $rep->gravedad_id?></td>
-				<td><?php echo $rep->ubicacion?></td>
-                <td><?php echo $rep->solucionado?></td>
+				<td><?php echo $r->id?></td>
+				<td><?php echo $r->titulo?></td>
+				<td><?php echo $r->descripcion ?></td>
+				<td><?php echo $tipo->getNombre($r->tipo_id)->nombre?></td>
+				<td><?php
+		if ($r->solucionado == 0) {
+			echo 'No';
+		} else {
+			echo 'Si';
+		}
+		?>
+				</td>
 			</tr>
 	<?php }?>
 	</table>
 		<div class="row">
 			<div class="col-md-12 text-center">
-			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'usuarios/index')); ?>
+			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'reportes/usuario/'.$data->items[0]->usuario_id)); ?>
 			</div>
 		</div>
 	</div>
 </div>
+
+<?php }else{ 
+	Flash::error('Éste usuario no ha creado aún ningún reporte.');
+
+	echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">';
+	echo '<div class="text-center"><i class="fa fa-spinner fa-spin"></i> Redirigiendo a REPORTES.</div>';
+	Redirect::to('reportes',2);
+} ?>

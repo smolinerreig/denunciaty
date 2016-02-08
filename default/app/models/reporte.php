@@ -6,29 +6,21 @@ class Reporte extends ActiveRecord {
 			return $repo;
 		}
 	}
-	public function getTodos() {
-		return $this->find_all_by_sql ( 'SELECT * FROM reporte;' );
+	public function getTodos($page) {
+		return $this->paginate_by_sql ( 'SELECT * FROM reporte','per_page:10',"page: $page");
 	}
-	public function createReporte($titulo, $foto = null, $descripcion, $gravedad_id, $ubicacion, $tipo_id, $usuario_id) {
-		$repo = new Reporte ();
-		$repo->titulo = $titulo;
-		if ($foto != '0') {
-			$repo->foto = $foto;
-		}
-		$repo->descripcion = $descripcion;
-		$repo->gravedad_id = $gravedad_id;
-		$repo->ubicacion = $ubicacion;
-		$repo->tipo_id = $tipo_id;
-		$repo->usuario_id = $usuario_id;
-		$repo->solucionado = 0;
-		if ($repo->create () == true) {
-			return $repo->create ();
-		} else {
-			return '0';
-		}
-	}
+	
 	public function getReportesByUsuario($id) {
 		return $this->find_all_by_sql ( 'SELECT * FROM reporte WHERE usuario_id = ' . $id . ' ORDER BY inicio_at DESC;' );
+	}
+	
+	public function deleteReporte($id){
+		if($this->exists($id)){
+			return $this->delete($id);
+		}else{
+			return false;
+		}
+		
 	}
 
 	public function deleteUsuarioReportes($id) {
@@ -37,6 +29,48 @@ class Reporte extends ActiveRecord {
 			$this->delete( $r->id );
 		}
 		return true;
+	}
+	
+	public function updateReporte($id, $campos){
+		$rep=$this->find($id);
+		if (isset ( $campos )) {
+			if ($campos ['titulo'] != '') {
+				$rep->titulo = $campos ['titulo'];
+			}
+			if ($campos ['foto'] != '') {
+				$rep->foto = $campos ['foto'];
+			}
+			if ($campos ['descripcion'] != '') {
+				$rep->descripcion = $campos ['descripcion'];
+			}
+			if ($campos ['longitud'] != '') {
+				$rep->longitud = $campos ['longitud'];
+			}
+			if ($campos ['latitud'] != '') {
+				$rep->latitud = $campos ['latitud'];
+			}
+			if ($campos ['ubicacion'] != '') {
+				$rep->ubicacion = $campos ['ubicacion'];
+			}
+			if ($campos ['tipo'] != '') {
+				$rep->tipo_id = $campos ['tipo'];
+			}
+			if ($campos ['solucionado'] != '') {
+				$rep->solucionado = $campos ['solucionado'];
+			}
+			if ($campos ['caducidad'] != '') {
+				$rep->caducidad_at = $campos ['caducidad'];
+			}
+			$r = $rep->update ();
+			if ($r != false) {
+				return $r;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		
 	}
 }
 ?>

@@ -1,3 +1,4 @@
+<?php $us=new Usuario();?>
 <div class="row page-header">
   <div class="col-xs-6">
 			<h1>Datos de reporte: <small><?php echo $data->titulo?> (<?php echo $data->id?>)</small></h1>
@@ -9,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<?php echo Form::open('usuarios/ver')?>
+		<?php echo Form::open('reportes/ver')?>
 			<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -54,7 +55,7 @@
 				
 				<div class="form-group">
 					<label>usuario</label> <input name="usuario" type="text"
-						class="form-control" value="<?php echo $usuario->nombre_usuario?> <?php echo $usuario->id?>" disabled>
+						class="form-control" value="<?php echo $us->getNombre($data->usuario_id)->nombre_usuario?> (<?php echo $usuario->id?>)" disabled>
 				</div>
 				<div class="form-group">
 					<label>Solucionado</label> <input name="solucionado" type="text"

@@ -23,6 +23,7 @@
 				<th>Nombre</th>
 				<th>Apellidos</th>
 				<th>Email</th>
+				<th></th>
 			</tr>
 		<?php foreach($data->items as $usuario){ ?>
 			<tr>
@@ -37,6 +38,7 @@
 				<td><?php echo $usuario->nombre?></td>
 				<td><?php echo $usuario->apellidos?></td>
 				<td><?php echo $usuario->email?></td>
+				<td><?php echo Html::link('reportes/usuario/'.$usuario->id, 'Ver reportes')?></td>
 			</tr>
 	<?php }?>
 	</table>

@@ -10,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<?php echo Form::open('usuarios/ver')?>
+		<?php echo Form::open('reportes/editar/'.$data->id)?>
 			<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -68,7 +68,7 @@
 				</div>
                 <div class="form-group">
 					<label title="">Caducidad</label> <input name="caducidad" type="text"
-						class="form-control" value="<?php echo $data->caducidad_at?>" disabled>
+						class="form-control" value="<?php echo $data->caducidad_at?>">
 				</div>
                 <div class="form-group">
 					<label >Latitud</label> <input name="latitud" type="text"

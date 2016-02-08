@@ -89,10 +89,8 @@ class Usuario extends ActiveRecord {
 		}
 	}
 	public function deleteUsuario($id) {
-		$repo = new Reporte ();
-		$usuario = $this->find ( $id );
+		$usuario = $this->exists ( $id );
 		if ($usuario == true) {
-			$delRep = $repo->deleteUsuarioReportes ( $id );
 			return $usuario->delete ( $id );
 		} else {
 			return false;
@@ -132,5 +130,9 @@ class Usuario extends ActiveRecord {
      
     public function getReportes($id, $page){
         return $this->paginate_by_sql ( 'SELECT * FROM reporte WHERE usuario_id='.$id, "per_page: 10", "page: $page" );
+    }
+    
+    public function getNombre($id){
+    	return $this->find_by_sql('SELECT nombre_usuario FROM usuario WHERE id='.$id);
     }
 }
