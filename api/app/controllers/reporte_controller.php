@@ -1,5 +1,5 @@
 <?php 
-Load::models('usuario', 'reporte');
+Load::models('usuario', 'reporte', 'puntos_acceso');
 
 /**
  * Controller por defecto si no se usa el routes
@@ -59,7 +59,7 @@ class ReporteController extends AppController {
      * @param int $tipo_id        	
      * @param int $usuario_id        	
      */
-    public function nuevo($titulo, $descripcion, $gravedad_id, $ubicacion, $longitud = null, $latitud = null, $tipo_id, $usuario_id, $foto) {
+    public function nuevo($titulo, $descripcion, $ubicacion, $longitud = null, $latitud = null, $tipo_id, $usuario_id, $foto) {
         $repo = new Reporte();
         if ($longitud == 'x') {
             $longitud = Reporte::getRandomCoordinates()[0];
@@ -67,12 +67,11 @@ class ReporteController extends AppController {
         if ($latitud == 'y') {
             $latitud = Reporte::getRandomCoordinates()[1];
         }
-        $crear = $repo->createReporte($titulo, str_replace('+', '/', $foto), $descripcion, $gravedad_id, $ubicacion, $longitud, $latitud, $tipo_id, $usuario_id);
+        $crear = $repo->createReporte($titulo, str_replace('+', '/', $foto), $descripcion, $ubicacion, $longitud, $latitud, $tipo_id, $usuario_id);
         if ($crear == false) {
             $this->data = '0';
         } else {
             $this->data = $crear;
         }
     }
-
 }

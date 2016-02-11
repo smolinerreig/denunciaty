@@ -9,14 +9,13 @@ class Reporte extends ActiveRecord {
 	public function getTodos() {
 		return $this->find_all_by_sql ( 'SELECT * FROM reporte' );
 	}
-	public function createReporte($titulo, $foto = null, $descripcion, $gravedad_id, $ubicacion, $longitud=null, $latitud=null, $tipo_id, $usuario_id) {
+	public function createReporte($titulo, $foto = null, $descripcion, $ubicacion, $longitud=null, $latitud=null, $tipo_id, $usuario_id) {
 		$repo = new Reporte ();
 		$repo->titulo = $titulo;
 		if ($foto != '0') {
 			$repo->foto = $foto;
 		}
 		$repo->descripcion = $descripcion;
-		$repo->gravedad_id = $gravedad_id;
 		$repo->ubicacion = $ubicacion;
         $repo->longitud=$longitud;
         $repo->latitud=$latitud;
