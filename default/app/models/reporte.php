@@ -6,6 +6,11 @@ class Reporte extends ActiveRecord {
 			return $repo;
 		}
 	}
+    public function getTodosSinPaginar() {
+		$reps=$this->find_all_by_sql ( 'SELECT * FROM reporte ORDER BY inicio_at ASC');
+        return $reps;
+	}
+    
 	public function getTodos($page) {
 		return $this->paginate_by_sql ( 'SELECT * FROM reporte','per_page:10',"page: $page");
 	}

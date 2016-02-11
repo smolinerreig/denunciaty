@@ -1,62 +1,54 @@
-<nav id="menu-principal" class="navbar navbar-default navbar-fixed-top <?php if(!Auth::is_valid()){echo 'white-bg';}?>">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar-collapse"
-				aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/index">Denunciaty</a>
-		</div>
+<nav id="menu-principal" class="navbar navbar-default navbar-fixed-top <?php if (!Auth::is_valid()) {
+    echo 'white-bg';
+} ?>">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index">Denunciaty</a>
+        </div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="navbar-collapse">
-		<?php if(Auth::is_valid()){ ?> 
-			<ul class="nav navbar-nav">
-				<li class=""><?php echo Html::link('usuarios', 'Usuarios')?></li>
-				<li class="dropdown">
-                    <a href="" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">Reportes <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Por localidad</a></li>
-						<li><a href="#">Por usuario</a></li>
-						<li role="separator" class="divider"></li>
-						<li><?php echo Html::link('reportes/index','Ver todos');?></li>
-					</ul></li>
-			</ul>
-			<?php }?>
-			
-			<?php if(!Auth::is_valid()){ ?> 
-			<?php echo Form::open('index/login','post','class="navbar-form navbar-right"')?>
-			<div>
-				<div class="form-group">
-					<label>Acceso administración &nbsp;</label> <input name="usuario"
-						type="text" class="form-control" placeholder="Usuario">
-				</div>
-				<div class="form-group">
-					<input name="password" type="password" class="form-control"
-						placeholder="Contraseña">
-				</div>
-				<button type="submit" class="btn btn-default">Entrar</button>
-			</div>
-			<?php echo Form::close();?>
-			<?php }else{?>
-			<ul class="nav navbar-nav navbar-right">
-				<li class=""><?php echo Html::link('index/logout', 'Cerrar sesión','id="cerrar-sesion" class="text-error"')?></li>
-			</ul>
-			<p class="navbar-text navbar-right">
-				Bienvenido, <a href="datos" class="navbar-link"><?php echo Auth::get('nombre_usuario')?>&nbsp;</a>
-			</p>
-			
-			
-			<?php }?>
-		
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <?php if (Auth::is_valid()) { ?>
+            <ul class="nav navbar-nav">
+                <li class=""><?php echo Html::link('usuarios', 'Usuarios') ?></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Por localidad</a></li>
+                        <li><a href="#">Por usuario</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><?php echo Html::link('reportes/index', 'Ver todos'); ?></li>
+                    </ul>
+                </li>
+            </ul>
+            <?php } ?> <?php if (!Auth::is_valid()) { ?> <?php echo Form::open('index/login', 'post', 'class="navbar-form navbar-right"') ?>
+            <div>
+                <div class="form-group">
+                    <label>Acceso administración &nbsp;</label>
+                    <input name="usuario" type="text" class="form-control" placeholder="Usuario">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Contraseña">
+                </div>
+                <button type="submit" class="btn btn-default">Entrar</button>
+            </div>
+            <?php echo Form::close(); ?> <?php } else { ?>
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><?php echo Html::link('index/logout', 'Cerrar sesión', 'id="cerrar-sesion" class="text-error"') ?></li>
+            </ul>
+            <p class="navbar-text navbar-right">
+                Bienvenido, <a href="datos" class="navbar-link"><?php echo Auth::get('nombre_usuario') ?>&nbsp;</a>
+            </p>
+
+
+            <?php } ?>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>
