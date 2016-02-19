@@ -1,23 +1,29 @@
-<?php Load::model('reporte');
-$rep = new Reporte();
-$cont=0;
+<?php
+Load::model ( 'reporte' );
+$rep = new Reporte ();
+$cont = 0;
 ?>
 <div class="row reportes">
     <?php foreach($rep->getTodosSinPaginar() as $r) { ?>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title"><?php echo $r->titulo ?></h2>
-        </div>
-        <div class="panel-body">
-            <p><strong>Descripción:</strong> <?php echo $r->descripcion ?></p>
-            <p><strong>Ubicación:</strong> <?php echo $r->ubicacion ?></p>
-            <p><strong>Fecha:</strong> <?php echo $r->inicio_at ?></p>
-        </div>
-    </div>
+		<div class="panel-heading">
+			<h2 class="panel-title"><?php echo $r->titulo ?></h2>
+		</div>
+		<div class="panel-body">
+			<p>
+				<strong>Descripción:</strong> <?php echo $r->descripcion ?></p>
+			<p>
+				<strong>Ubicación:</strong> <?php echo $r->ubicacion ?></p>
+			<p>
+				<strong>Fecha:</strong> <?php echo $r->inicio_at ?></p>
+			<div class="text-center">
+			<?php echo Html::link('ver/index/'.$r->id, 'Ver reporte','class="btn btn-default btn-sm"')?>
+				
+			</div>
+		</div>
+	</div>
     <?php $cont;?>
-    <?php if($cont>=5){
-        break;
-    }?>
+
     <?php } ?>
 
 </div>

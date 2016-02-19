@@ -7,7 +7,7 @@ class Reporte extends ActiveRecord {
 		}
 	}
     public function getTodosSinPaginar() {
-		$reps=$this->find_all_by_sql ( 'SELECT * FROM reporte ORDER BY inicio_at ASC');
+		$reps=$this->find_all_by_sql ( 'SELECT * FROM reporte ORDER BY inicio_at DESC LIMIT 5');
         return $reps;
 	}
     
