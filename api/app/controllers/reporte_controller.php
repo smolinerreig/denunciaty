@@ -45,11 +45,10 @@ class ReporteController extends AppController {
      * El parámertro $foto es el path donde se encuentra la foto que el usuario elija subir.
      * Todos los parámetros son necesarios
      *
-     * Ejemplo: http://denunciaty/api/reporte/nuevo/Masacre en Fuentelidiota/Han palmado chorrocientos gatos al indigestarse comiendo conejo/1/Fuentelidiota/2/5/0
-     * Si no se desea subir foto se recomiento dar valor 0.
+     * Si no se desea subir foto se recomienda dar valor 0.
      * 
      * Si se quisiera obtener longitud y latitud aleatorios habría que insertar "x" en el campo longitud y "y en latitud"
-     * Ejemplo: http://denunciaty/api/reporte/nuevo/Accidente/Uno muy gordo/2/Una calle/x/y/1/23/foto 
+     * Ejemplo: http://denunciaty/api/reporte/nuevo/Accidente/Uno muy gordo/Una calle/x/y/1/23/foto 
      *
      * @param string $titulo        	
      * @param string $foto        	

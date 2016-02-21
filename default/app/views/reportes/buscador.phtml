@@ -1,0 +1,69 @@
+<?php $tipo=new Tipo();?>
+<div class="page-header">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1>
+				Reportes <small></small>
+			</h1>
+		</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default btn-atras pull-right"
+				href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+		</div>
+	</div>
+</div>
+<div id="ver-reportes" class="row">
+	<div class="col-md-6 col-md-offset-6 text-right">
+		<?php echo Form::open('')?>
+		<div class="form-inline">
+			<input id="busc" class="form-control"
+				placeholder="Buscar por ubicación y nombre" />
+		</div>
+		<?php echo Form::close()?>
+		<br>
+	</div>
+
+	<div class="col-md-10 col-md-offset-1">
+		<table class="table table-responsive">
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Titulo</th>
+				<th>Descripción</th>
+				<th>Tipo</th>
+				<th>Solucionado</th>
+			</tr>
+			
+		<?php foreach($data->items as $r){ ?>
+			<tr>
+			<?php echo Form::input('hidden', $r->usuario_id.$r->ubicacion) ?>
+				<td class="text-center">
+				<?php echo Html::link('reportes/ver/'.$r->id, '<i class="material-icons" title="Ver datos del reporte">face</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('reportes/editar/'.$r->id, '<i class="material-icons" title="Editar datos del reporte" >build</i>', 'class="link"')?>&nbsp;
+				<?php echo Html::link('reportes/eliminar/'.$r->id, '<i class="material-icons" title="Eliminar reporte" >highlight_off</i>', 'class="danger"')?>
+				</td>
+				<td><?php echo $r->id?></td>
+				<td><?php echo $r->titulo?></td>
+				<td><?php echo $r->descripcion ?></td>
+				<td><?php echo $tipo->getNombre($r->tipo_id)->nombre?></td>
+				<td><?php
+			if ($r->solucionado == 0) {
+				echo 'No';
+			} else {
+				echo 'Si';
+			}
+			?>
+				</td>
+			</tr>
+	<?php }?>
+	</table>
+		<div class="row">
+			<div class="col-md-12 text-center">
+			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'reportes/index')); ?>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+</script>

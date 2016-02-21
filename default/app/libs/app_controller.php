@@ -16,9 +16,11 @@ require_once CORE_PATH . 'kumbia/controller.php';
  */
 class AppController extends Controller {
 	final protected function initialize() {
-		if(Router::get('controller')!='index' && !Auth::is_valid()){
-			Flash::error('Necesita ser un administrador e iniciar sesión para acceder a esta zona.');
-			Redirect::to('index');
+		if (Router::get ( 'controller' ) == 'usuarios' || Router::get ( 'controller' ) == 'reportes') {
+			if (! Auth::is_valid ()) {
+				Flash::error ( 'Necesita ser un administrador e iniciar sesión para acceder a esta zona.' );
+				Redirect::to ( 'index' );
+			}
 		}
 	}
 	final protected function finalize() {

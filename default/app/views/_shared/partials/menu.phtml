@@ -18,8 +18,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Por localidad</a></li>
-                        <li><a href="#">Por usuario</a></li>
+                        <li><?php echo Html::link('reportes/buscador', 'Buscador','id="buscador"')?></li>
                         <li role="separator" class="divider"></li>
                         <li><?php echo Html::link('reportes/index', 'Ver todos'); ?></li>
                     </ul>

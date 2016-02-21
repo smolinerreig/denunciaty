@@ -1,7 +1,28 @@
+<?php
+Load::model ( 'tipo' );
+$tip = new Tipo ();
+?>
 <br>
+<div class="row page-header">
+	<div class="col-xs-6">
+		<h1>
+			Datos de reporte: <small><?php echo $data->titulo?></small>
+		</h1>
+	</div>
+	<div class="col-xs-6">
+		<a class="btn btn-default btn-atras pull-right"
+			href="javascript:history.back(1)">Volver Atrás</a>&nbsp;
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-4">
-	
+		<ul class="list-group">
+			<li class="list-group-item">Nombre: <span class="gray-font"><?php echo $data->titulo?></span></li>
+			<li class="list-group-item">Descripción: <span class="gray-font"><?php echo $data->descripcion ?></span></li>
+			<li class="list-group-item">Ubicación: <span class="gray-font"><?php echo $data->ubicacion ?></span></li>
+			<li class="list-group-item">Tipo: <span class="gray-font"><?php echo $tip->getNombre($data->tipo_id)->nombre ?></span></li>
+			<li class="list-group-item">Fecha: <span class="gray-font"><?php echo $data->inicio_at ?></span></li>
+		</ul>
 	</div>
 	<div class="col-md-8">
 		<div style="width: 100%">

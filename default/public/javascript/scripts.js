@@ -1,3 +1,13 @@
+$(document).ready(function(){
+	$('#busc').keyup(function(){
+		console.log('adsadsdsa');
+	});
+});
+
+function buscar(){
+console.log('adsasd');	
+}
+
 function random_password(length) {
 	var iteration = 0;
 	var password = "";

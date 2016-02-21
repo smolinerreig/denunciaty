@@ -3,6 +3,7 @@ Load::model ( 'reporte' );
 $rep = new Reporte ();
 $cont = 0;
 ?>
+<br class="hidden-lg hidden-md">
 <div class="row reportes">
     <?php foreach($rep->getTodosSinPaginar() as $r) { ?>
     <div class="panel panel-default">
@@ -11,11 +12,11 @@ $cont = 0;
 		</div>
 		<div class="panel-body">
 			<p>
-				<strong>Descripción:</strong> <?php echo $r->descripcion ?></p>
+				<strong>Descripción:</strong> <span class="gray-font"><?php echo $r->descripcion ?></span></p>
 			<p>
-				<strong>Ubicación:</strong> <?php echo $r->ubicacion ?></p>
+				<strong>Ubicación:</strong> <span class="gray-font"><?php echo $r->ubicacion ?></span></p>
 			<p>
-				<strong>Fecha:</strong> <?php echo $r->inicio_at ?></p>
+				<strong>Fecha:</strong> <span class="gray-font"><?php echo $r->inicio_at ?></span></p>
 			<div class="text-center">
 			<?php echo Html::link('ver/index/'.$r->id, 'Ver reporte','class="btn btn-default btn-sm"')?>
 				

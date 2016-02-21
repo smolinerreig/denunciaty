@@ -58,4 +58,13 @@ class ReportesController extends AppController {
 			Redirect::to ( '' );
 		}
 	}
+	
+	public function buscador($page=null){
+		if($page==null){
+			$page=1;
+		}
+		$rep = new Reporte ();
+		$tip = new Tipo ();
+		$this->data = $rep->getTodos ( $page );
+	}
 }
