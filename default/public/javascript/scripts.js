@@ -11,10 +11,6 @@ $(document).ready(function() {
 	});
 });
 
-function buscar() {
-	console.log('adsasd');
-}
-
 function random_password(length) {
 	var iteration = 0;
 	var password = "";
