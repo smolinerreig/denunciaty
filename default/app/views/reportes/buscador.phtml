@@ -1,4 +1,7 @@
-<?php $tipo=new Tipo();?>
+<?php
+$tipo = new Tipo ();
+$us = new Usuario ();
+?>
 <div class="page-header">
 	<div class="row">
 		<div class="col-xs-6">
@@ -15,17 +18,17 @@
 <div id="ver-reportes" class="row">
 	<div class="col-md-6 col-md-offset-6 text-right">
 		<?php echo Form::open('')?>
-		<div class="form-inline">
+		<div class="form">
 			<input id="busc" class="form-control"
-				placeholder="Buscar por ubicación y nombre" />
+				placeholder="Introducir ubicación o nombre de usuario" />
 		</div>
 		<?php echo Form::close()?>
 		<br>
 	</div>
 
-	<div class="col-md-10 col-md-offset-1">
+	<div id="buscador" class="col-md-10 col-md-offset-1">
 		<table class="table table-responsive">
-			<tr>
+			<tr id="head">
 				<th></th>
 				<th>ID</th>
 				<th>Titulo</th>
@@ -34,9 +37,9 @@
 				<th>Solucionado</th>
 			</tr>
 			
-		<?php foreach($data->items as $r){ ?>
-			<tr>
-			<?php echo Form::input('hidden', $r->usuario_id.$r->ubicacion) ?>
+		<?php foreach($data as $r){ ?>
+			<tr
+				id="<?php echo $us->getNombre($r->usuario_id)->nombre_usuario.''.$r->ubicacion.''.$r->id ?>">
 				<td class="text-center">
 				<?php echo Html::link('reportes/ver/'.$r->id, '<i class="material-icons" title="Ver datos del reporte">face</i>', 'class="link"')?>&nbsp;
 				<?php echo Html::link('reportes/editar/'.$r->id, '<i class="material-icons" title="Editar datos del reporte" >build</i>', 'class="link"')?>&nbsp;
@@ -57,11 +60,6 @@
 			</tr>
 	<?php }?>
 	</table>
-		<div class="row">
-			<div class="col-md-12 text-center">
-			<?php View::partial('paginators/bootstrap_pag', false, array('page' => $data, 'url' => 'reportes/index')); ?>
-			</div>
-		</div>
 	</div>
 </div>
 <script type="text/javascript">

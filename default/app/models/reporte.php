@@ -6,8 +6,18 @@ class Reporte extends ActiveRecord {
 			return $repo;
 		}
 	}
-    public function getTodosSinPaginar() {
-		$reps=$this->find_all_by_sql ( 'SELECT * FROM reporte ORDER BY inicio_at DESC LIMIT 5');
+    public function getTodosSinPaginar($lim,$ord=null) {
+    	if($lim==0){
+    		$limit='';
+    	}else{
+    		$limit='LIMIT '.$lim;
+    	}
+    	if($ord==0){
+    		$orden='ORDER BY inicio_at ASC';
+    	}else{
+    		$orden='ORDER BY inicio_at DESC';
+    	}
+		$reps=$this->find_all_by_sql ( 'SELECT * FROM reporte '.$orden.' '.$limit);
         return $reps;
 	}
     

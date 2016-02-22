@@ -5,7 +5,7 @@ $cont = 0;
 ?>
 <br class="hidden-lg hidden-md">
 <div class="row reportes">
-    <?php foreach($rep->getTodosSinPaginar() as $r) { ?>
+    <?php foreach($rep->getTodosSinPaginar(5,2) as $r) { ?>
     <div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 class="panel-title"><?php echo $r->titulo ?></h2>

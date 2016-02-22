@@ -1,11 +1,18 @@
-$(document).ready(function(){
-	$('#busc').keyup(function(){
-		console.log('adsadsdsa');
+$(document).ready(function() {
+	$('#busc').keyup(function() {
+		console.log($('#busc').val());
+		for (var i = 0; i < $('tr:not(#head)').length; i++) {
+			if ($('tr:not(#head)')[i].getAttribute('id').toLowerCase().indexOf($('#busc').val().toLowerCase()) < 0) {
+				$('tr:not(#head)')[i].style.display='none';
+			}else{
+				$('tr:not(#head)')[i].style.display='table-row';
+			}
+		}
 	});
 });
 
-function buscar(){
-console.log('adsasd');	
+function buscar() {
+	console.log('adsasd');
 }
 
 function random_password(length) {

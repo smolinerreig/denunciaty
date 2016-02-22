@@ -44,7 +44,7 @@ body {
 	background-color: #224562;
 }
 
-#menu-principal .divider{
+#menu-principal .divider {
 	background-color: #152a3b;
 }
 
@@ -55,7 +55,7 @@ body {
 #menu-principal input, #menu-principal button {
 	border-radius: 0px;
 	color: #224562;
-	background-color:#fff;
+	background-color: #fff;
 }
 
 .col-xs-12.no-side-margin.no-side-padding {
@@ -68,6 +68,10 @@ hr {
 
 .panel-heading {
 	height: auto;
+}
+
+h1, .btn-default.btn-atras {
+	margin-top: 0px;
 }
 
 .footer {
@@ -144,12 +148,20 @@ hr {
 }
 
 div.reportes {
-	
 	padding-right: 20px;
 	padding-left: 20px;
 }
 
-.gray-font{
-	color:#777;
+.gray-font {
+	color: #777;
 	font-weight: bold;
+}
+
+header {
+	margin-bottom: 20px;
+}
+
+#buscador{
+	overflow: scroll;
+	height: 500px;
 }

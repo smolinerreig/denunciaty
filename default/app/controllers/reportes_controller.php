@@ -18,8 +18,7 @@ class ReportesController extends AppController {
 		}
 		$us = new Usuario ();
 		$rep = new Reporte ();
-		$this->data=$us->getReportes ( $id, $page );
-		
+		$this->data = $us->getReportes ( $id, $page );
 	}
 	public function ver($id) {
 		$us = new Usuario ();
@@ -36,13 +35,13 @@ class ReportesController extends AppController {
 			$this->usuario = $us->getUsuario ( $this->data->usuario_id );
 			$this->tipos = $tip->getTipos ();
 		} else {
-			$r=$rep->updateReporte($id, $_POST);
-			if($r!=false){
-				Flash::success('Los datos del reporte han sido modificados.');
-				Redirect::to('');
-			}else{
-				Flash::error('No han podido modificarse los datos del reporte.');
-				Redirect::to('');
+			$r = $rep->updateReporte ( $id, $_POST );
+			if ($r != false) {
+				Flash::success ( 'Los datos del reporte han sido modificados.' );
+				Redirect::to ( '' );
+			} else {
+				Flash::error ( 'No han podido modificarse los datos del reporte.' );
+				Redirect::to ( '' );
 			}
 		}
 	}
@@ -58,13 +57,12 @@ class ReportesController extends AppController {
 			Redirect::to ( '' );
 		}
 	}
-	
-	public function buscador($page=null){
-		if($page==null){
-			$page=1;
+	public function buscador() {
+		if ($page == null) {
+			$page = 1;
 		}
 		$rep = new Reporte ();
 		$tip = new Tipo ();
-		$this->data = $rep->getTodos ( $page );
+		$this->data = $rep->getTodosSinPaginar (0);
 	}
 }
