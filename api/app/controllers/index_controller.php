@@ -11,6 +11,9 @@ public function before_filter() {
 		View::select ( null );
 	}
 
+	public function index(){
+		View::select(null,null);
+	}
     /*
     *Devuelve todo los puntos de acceso WIFI.
     *Ejemplo: http://denunciaty/api/index/puntos
