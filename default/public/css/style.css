@@ -25,6 +25,8 @@ body {
 	font-family: 'Ubuntu', serif;
 	padding-top: 60px;
 	color: #224562;
+	background-repeat: no-repeat;
+	background-attachment: fixed
 }
 
 #menu-principal, .panel-default .panel-heading .panel-title {
@@ -134,7 +136,6 @@ h1, .btn-default.btn-atras {
 	background-color: #32471a;
 	border-color: #0c1721;
 	color: white;
-	
 }
 
 .btn-adelante:hover {
@@ -175,7 +176,16 @@ header {
 	font-size: 3em;
 	color: white;
 }
-#tit-portada + div{
+
+#tit-portada+div {
 	color: white;
-	font-size:1.5em;
+	font-size: 1.5em;
+}
+
+label.error {
+	display: block;
+	text-align: center;
+	margin-right: 10px;
+	margin-left: 10px;
+	border-radius: 7px;
 }
