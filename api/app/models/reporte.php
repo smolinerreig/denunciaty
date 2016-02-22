@@ -14,7 +14,7 @@ class Reporte extends ActiveRecord {
 		$repo->titulo = $titulo;
 		
 		$fecha2 = new DateTime ();
-		$fecha1 = $fecha2;
+		$fecha1 = new DateTime ();
 		$fecha2->add ( new DateInterval ( 'P30D' ) );
 		$fecha2->format ( 'Y-m-d' ) . "\n";
 		$fecha1->format ( 'Y-m-d' ) . "\n";
