@@ -134,7 +134,7 @@ h1, .btn-default.btn-atras {
 	background-color: #32471a;
 	border-color: #0c1721;
 	color: white;
-	margin-top: 20px;
+	
 }
 
 .btn-adelante:hover {
@@ -158,10 +158,24 @@ div.reportes {
 }
 
 header {
+	background-image: url('/default/public/img/img_cabecera.png');
+	background-position: 100%;
+	min-height: 200px;
 	margin-bottom: 20px;
 }
 
-#buscador{
+#buscador {
 	overflow: scroll;
 	height: 500px;
+}
+
+#tit-portada {
+	font-family: 'Play', serif;
+	font-weight: bold;
+	font-size: 3em;
+	color: white;
+}
+#tit-portada + div{
+	color: white;
+	font-size:1.5em;
 }
