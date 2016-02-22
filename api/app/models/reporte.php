@@ -12,7 +12,12 @@ class Reporte extends ActiveRecord {
 	public function createReporte($titulo, $foto = null, $descripcion, $ubicacion, $longitud = null, $latitud = null, $tipo_id, $usuario_id) {
 		$repo = new Reporte ();
 		$repo->titulo = $titulo;
-		$fecha = new DateTime ();
+		
+		$fecha2 = new DateTime ();
+		$fecha1 = $fecha2;
+		$fecha2->add ( new DateInterval ( 'P30D' ) );
+		$fecha2->format ( 'Y-m-d' ) . "\n";
+		$fecha1->format ( 'Y-m-d' ) . "\n";
 		
 		if ($foto != '0') {
 			$repo->foto = $foto;
@@ -24,7 +29,8 @@ class Reporte extends ActiveRecord {
 		$repo->tipo_id = $tipo_id;
 		$repo->usuario_id = $usuario_id;
 		$repo->solucionado = 0;
-		$repo->caducidad_at = date_add ( $fecha, date_interval_create_from_date_string ( '10 days' ) );
+		$repo->inicio_at = $fecha1;
+		$repo->caducidad_at = $fecha2;
 		$rep = $repo->create ();
 		if ($rep == true) {
 			return true;
