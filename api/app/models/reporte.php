@@ -11,13 +11,14 @@ class Reporte extends ActiveRecord {
 	}
 	public function createReporte($titulo, $foto = null, $descripcion, $ubicacion, $longitud = null, $latitud = null, $tipo_id, $usuario_id) {
 		$repo = new Reporte ();
-		
+
 		$fecha = strtotime ( '+30 day' , strtotime (date('Y-m-d') ) ) ;
 		$nuevafecha = date ( 'Y-m-d' , $fecha );
-		
+
 		if ($foto != '0') {
 			$repo->foto = $foto;
 		}
+		$repo->titulo=$titulo;
 		$repo->descripcion = $descripcion;
 		$repo->ubicacion = $ubicacion;
 		$repo->longitud = $longitud;
