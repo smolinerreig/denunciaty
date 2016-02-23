@@ -9,6 +9,7 @@ $(document).ready(function() {
 			}
 		}
 	});
+
 	$('#nuevo_usuario').submit(function(e) {
 	    e.preventDefault();
 	  }).validate({
@@ -57,8 +58,8 @@ $(document).ready(function() {
 	      }
 	    }
 	  });
-		
 });
+
 function random_password(length) {
 	var iteration = 0;
 	var password = "";

@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset=<?= APP_CHARSET ?>>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Denúnciaty</title>
-<link rel="shortcut icon" href="/default/public/favicon.ico"
-	type="image/x-icon">
-<link rel="icon" href="/default/public/favicon.ico" type="image/x-icon">
+	<meta charset=<?= APP_CHARSET ?>>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Denúnciaty</title>
+
+	<link rel="shortcut icon" href="/default/public/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/default/public/favicon.ico" type="image/x-icon">
   <?php echo Tag::css('kumbia')?>
   <?php echo Tag::css('bootstrap/bootstrap.min')?>
   <?php echo Tag::css('style')?>
-<link href='https://fonts.googleapis.com/css?family=Ubuntu|Roboto|Play'
-	rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu|Roboto|Play'	rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <?= Html::includeCss()?>
   <?php echo Tag::js('jquery-1.12.0.min')?>
-  
-  	<?php echo Tag::js('bootstrap.min')?>
-  		<?php echo Tag::js('jquery.validate')?>
- 	<?php echo Tag::js('scripts')?>
+  <?php echo Tag::js('bootstrap.min')?>
+	<?php echo Tag::js('scripts')?>
+	
 </head>
 <body <?php if(Router::get ( 'controller' ) == 'index'){?> style="background-image:url('/default/public/img/background.jpg')"<?php }?>>
 	<div class="container-fluid">
