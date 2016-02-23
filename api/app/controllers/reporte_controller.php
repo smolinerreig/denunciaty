@@ -24,11 +24,9 @@ class ReporteController extends AppController {
     /**
      * Devuelve los datos del reporte
      * Ejemplo: http://denunciaty/api/reporte/datos/2
-     * 
      * Para recibir reportes por tipo, poner 0 como valor de id y la id del tipo en $tipo_id
      * Ejemplo: http://denunciaty/api/reporte/datos/0/1
-     *
-     * @param int $id        	
+     * @param int $id
      */
     public function datos($id = null, $tipo_id = null) {
         $repo = new Reporte();
@@ -42,21 +40,17 @@ class ReporteController extends AppController {
     }
     /**
      * Inserta un nuevo reporte en la base de datos
-     * El parámertro $foto es el path donde se encuentra la foto que el usuario elija subir.
      * Todos los parámetros son necesarios
-     *
      * Si no se desea subir foto se recomienda dar valor 0.
-     * 
      * Si se quisiera obtener longitud y latitud aleatorios habría que insertar "x" en el campo longitud y "y en latitud"
-     * Ejemplo: http://denunciaty/api/reporte/nuevo/Accidente/Uno muy gordo/Una calle/x/y/1/23/foto 
-     *
-     * @param string $titulo        	
-     * @param string $foto        	
-     * @param string $descripcion        	
-     * @param int $gravedad_id        	
-     * @param string $ubicacion        	
-     * @param int $tipo_id        	
-     * @param int $usuario_id        	
+     * Ejemplo: http://denunciaty/api/reporte/nuevo/Accidente/Uno muy gordo/Una calle/x/y/1/23/foto
+     * @param string $titulo
+     * @param string $foto
+     * @param string $descripcion
+     * @param int $gravedad_id
+     * @param string $ubicacion
+     * @param int $tipo_id
+     * @param int $usuario_id
      */
     public function nuevo($titulo, $descripcion, $ubicacion, $longitud = null, $latitud = null, $tipo_id, $usuario_id, $foto) {
         $repo = new Reporte();
