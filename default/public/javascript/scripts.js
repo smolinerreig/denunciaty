@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	$('#busc').keyup(function() {
 		console.log($('#busc').val());
 		for (var i = 0; i < $('tr:not(#head)').length; i++) {
